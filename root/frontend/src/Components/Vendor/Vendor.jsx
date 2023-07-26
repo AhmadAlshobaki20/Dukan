@@ -1,7 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Vendor.css";
-
+import axios from "axios";
 const Vendor = () => {
+  const [Alldata, setAllData] = useState({
+    fname: "",
+    lname: "",
+    phone: "",
+    storeName: "",
+    email: "",
+    password: "",
+    address: "",
+  });
+
+  const handlerData = (event) => {
+    const { name, value } = event.target;
+    setAllData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  useEffect(() => {
+    getVendorData();
+  }, []);
+
+  const getVendorData = async () => {
+    try {
+      const response = await axios.get(`/api/v1/vendors`);
+      console.log(response.data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const postVendorData = async () => {
+    try {
+      const response = await axios.post(`/api/v1/vendors/register`, Alldata);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // handlerSubmit
+  const handlerSubmit = (event) => {
+    event.preventDefault();
+    postVendorData();
+    console.log("done");
+    console.log(Alldata);
+  };
   return (
     <section
       className="vh-100 bg-image"
@@ -19,102 +63,96 @@ const Vendor = () => {
                   <h2 className="text-uppercase text-center mb-5">
                     باشر بأنشاء متجرك مع دكان
                   </h2>
-
                   <form>
                     <div className="form-outline mb-4">
                       <input
                         type="text"
                         id="form3Example1cg"
-                        className="form-control form-control-lg"
+                        className="form-control-lg"
+                        placeholder="اسمك الاول"
+                        name="fname"
+                        value={Alldata.fname}
+                        onChange={(e) => {
+                          handlerData(e);
+                        }}
                       />
-                      <label className="form-label" htmlFor="form3Example1cg">
-                        اسمك الاول
-                      </label>
                     </div>
                     <div className="form-outline mb-4">
                       <input
-                        type="password"
+                        type="text"
                         id="form3Example4cdg"
-                        className="form-control form-control-lg"
+                        className="form-control-lg"
+                        placeholder="اسمك الثاني"
+                        name="lname"
+                        onChange={(e) => {
+                          handlerData(e);
+                        }}
+                        value={Alldata.lname}
                       />
-                      <label className="form-label" htmlFor="form3Example4cdg">
-                        اسمك الثاني
-                      </label>
                     </div>
                     <div className="form-outline mb-4">
                       <input
-                        type="password"
+                        type="text"
                         id="form3Example4cdg"
-                        className="form-control form-control-lg"
+                        className="form-control-lg"
+                        placeholder="اسم المتجر"
+                        name="storeName"
+                        onChange={(e) => {
+                          handlerData(e);
+                        }}
+                        value={Alldata.storeName}
                       />
-                      <label className="form-label" htmlFor="form3Example4cdg">
-                        اسم المتجر
-                      </label>
                     </div>
                     <div className="form-outline mb-4">
                       <input
-                        type="password"
+                        type="phone"
                         id="form3Example4cdg"
-                        className="form-control form-control-lg"
+                        className="form-control-lg"
+                        placeholder="رقم الهاتف"
+                        name="phone"
+                        onChange={handlerData}
+                        value={Alldata.phone}
                       />
-                      <label className="form-label" htmlFor="form3Example4cdg">
-                        رقم الهاتف
-                      </label>
                     </div>
                     <div className="form-outline mb-4">
                       <input
                         type="email"
                         id="form3Example3cg"
-                        className="form-control form-control-lg"
+                        className="form-control-lg"
+                        placeholder="بريدك الإلكتروني"
+                        name="email"
+                        onChange={handlerData}
+                        value={Alldata.email}
                       />
-                      <label className="form-label" htmlFor="form3Example3cg">
-                        بريدك الإلكتروني
-                      </label>
+                    </div>
+                    <div className="form-outline mb-4">
+                      <input
+                        type="text"
+                        id="form3Example3cg"
+                        className="form-control-lg"
+                        placeholder="العنوان"
+                        name="address"
+                        onChange={handlerData}
+                        value={Alldata.address}
+                      />
                     </div>
                     <div className="form-outline mb-4">
                       <input
                         type="password"
                         id="form3Example4cg"
-                        className="form-control form-control-lg"
+                        className="form-control-lg"
+                        placeholder="كلمة المرور"
+                        name="password"
+                        onChange={handlerData}
+                        value={Alldata.password}
                       />
-                      <label className="form-label" htmlFor="form3Example4cg">
-                        كلمة المرور
-                      </label>
                     </div>
-
-                    <div className="form-check d-flex justify-content-center mb-5">
-                      <input
-                        className="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                        id="form2Example3cg"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="form2Example3g"
-                      >
-                        أوافق على جميع بنود{" "}
-                        <a href="#!" className="text-body">
-                          <u>شروط الخدمة</u>
-                        </a>
-                      </label>
-                    </div>
-
+                    <div className="form-check d-flex justify-content-center mb-5"></div>
                     <div className="d-flex justify-content-center">
-                      <button
-                        type="button"
-                        className="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
-                      >
-                        تسجيل
+                      <button className="btn" onClick={handlerSubmit}>
+                        انشاء
                       </button>
                     </div>
-
-                    <p className="text-center text-muted mt-5 mb-0">
-                      هل لديك حساب بالفعل؟{" "}
-                      <a href="#!" className="fw-bold text-body">
-                        <u>قم بتسجيل الدخول هنا</u>
-                      </a>
-                    </p>
                   </form>
                 </div>
               </div>

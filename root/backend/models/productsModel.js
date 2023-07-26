@@ -1,20 +1,14 @@
 const mongoose = require("mongoose");
-const vendor = require(`./vendorModel`);
-// create inventory schema
 
-const productSchema = mongoose.Schema({
-  productName: {
-    type: String,
-  },
-  category: {
-    type: String,
-  },
-  Quantity: Number,
-  Price:{
-    type:Number,
-    required:[true, "the product must have a price"]
-  }
+const productSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true, min: 0 },
+  // imageUrl: { type: string, required: true },
+  quantity: { type: Number, required: true, min: 1 },
+  // orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
 });
 
 const Product = mongoose.model("Product", productSchema);
+
 module.exports = Product;

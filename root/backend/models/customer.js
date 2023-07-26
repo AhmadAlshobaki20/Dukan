@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 
-const vendorSchema = new mongoose.Schema({
-  fname: { type: String, required: true },
-  lname: String,
+const customerSchema = new mongoose.Schema({
+  name: { type: String, required: true },
   email: {
     type: String,
     required: true,
@@ -23,11 +22,14 @@ const vendorSchema = new mongoose.Schema({
         "Password must be at least 8 characters with uppercase and lowercase letters",
     },
   },
-  address: { type: String, required: true },
-  products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
-  orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "order" }],
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Order",
+    },
+  ],
 });
 
-const Vendor = mongoose.model("Vendor", vendorSchema);
+const Customer = mongoose.model("Customer", customerSchema);
 
-module.exports = Vendor;
+module.exports = Customer;

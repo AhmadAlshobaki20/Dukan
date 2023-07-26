@@ -1,9 +1,19 @@
-// import vendor model
-const vendor = require("./../models/vendorModel");
+// import vendor mode
+const jwt = require("jsonwebtoken");
+const Vendor = require("../models/vendorModel");
+const Customer = require("../models/customer");
+const bcrypt = require("bcrypt");
 
+const saltRounds = 10;
+
+// bcrypt.genSalt(saltRounds, (err, salt) => {
+//   bcrypt.hash(password, salt, (err, hash) => {
+//     console.log(hash, "+", salt, password);
+//   });
+// });
 // create handler function to get all vendors
 exports.getAllVendors = async (req, res) => {
-  const vendors = await vendor.find();
+  const vendors = await Vendor.find();
   try {
     res.status(200).json({
       result: vendors.length,
@@ -18,8 +28,8 @@ exports.getAllVendors = async (req, res) => {
 };
 
 exports.createNewVendor = async (req, res) => {
-  const newVendor = await vendor.create(req.body);
   try {
+    const newVendor = await Vendor.create(req.body);
     res.status(201).json({
       status: "success",
       data: {
@@ -34,9 +44,9 @@ exports.createNewVendor = async (req, res) => {
 // handler function to get specific vendor
 exports.getVendor = async (req, res) => {
   try {
-    const specificVendor = await vendor
-      .findById(req.params.id)
-      .populate("product");
+    const specificVendor = await Vendor.findById(req.params.id).populate(
+      "products"
+    );
     res.status(200).json({
       status: "success",
       data: {
@@ -50,7 +60,7 @@ exports.getVendor = async (req, res) => {
 
 exports.updateVendor = async (req, res) => {
   try {
-    const updateVendor = await vendor.findByIdAndUpdate(
+    const updateVendor = await Vendor.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
@@ -67,11 +77,26 @@ exports.updateVendor = async (req, res) => {
     console.log("UpdateError🔥💣", err);
   }
 };
-
 // handler function to delete specific vendor
 exports.deleteVendor = async (req, res) => {
-  await vendor.findByIdAndDelete(req.params.id);
+  await Vendor.findByIdAndDelete(req.params.id);
   res.status(204).json({
     vendor: null,
   });
+};
+
+// register handler Function
+exports.registerVendor = async (req, res) => {
+  const newVendor = await Vendor.create(req.body);
+  res.status(201).json({
+    status: "success",
+    data: {
+      vendor: newVendor,
+    },
+  });
+};
+
+// Controller for vendor logout
+exports.vendorLogout = (req, res) => {
+  res.status(200).json({ message: "Vendor logout successful." });
 };
