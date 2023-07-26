@@ -1,0 +1,16 @@
+.links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 1);
+}
+
+.links :hover {
+  transform: scaleY(0.9) translateY(-3px);
+  transition: 0.4s ease-in-out;
+  color: rgba(255, 225, 106, 1);
+}
