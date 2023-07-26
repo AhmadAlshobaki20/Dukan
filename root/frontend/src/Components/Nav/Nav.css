@@ -1,0 +1,30 @@
+.mantine-1cqtz4v:hover {
+  background-color: #8ccea8;
+  transform: scaleY(0.9) translateY(-3px);
+  transition: 0.4s ease-in-out;
+  color: rgba(255, 225, 106, 1);
+}
+
+/* .mantine-qbpn3m {
+  color: black;
+}
+
+.tabler-icon-chevron-down {
+  stroke: white;
+} */
+
+.tabler-icon-chevron-down:hover {
+  stroke: rgba(255, 225, 106, 1);
+}
+
+.mantine-zpoir7,
+.mantine-zpoir7::before,
+.mantine-zpoir7::after {
+  background-color: rgba(255, 225, 106, 1);
+}
+
+@media (max-width: 400px) {
+  .icons {
+    display: none !important;
+  }
+}
