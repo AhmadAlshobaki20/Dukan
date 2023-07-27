@@ -1,0 +1,90 @@
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/*Hero img style*/
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.hero-container img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 1;
+}
+
+.content-container {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  color: #fff;
+}
+.title:hover {
+  color: rgba(255, 225, 106, 1);
+}
+.dukan {
+  color: rgba(255, 225, 106, 1);
+  font-weight: 800;
+}
+
+.dukan:hover {
+  color: #fff;
+}
+.description {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.description:hover {
+  color: rgba(255, 225, 106, 1);
+}
+
+/*categoryCard style*/
+.card-title {
+  text-align: center;
+  margin: 3rem;
+}
+
+.card-img-top {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.card-img-top:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+/*AboutSlider*/
+.about:hover {
+  background-color: rgba(117, 201, 183, 0.634);
+}
+
+.about {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.about:hover {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
