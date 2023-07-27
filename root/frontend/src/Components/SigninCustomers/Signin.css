@@ -1,0 +1,56 @@
+/* * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+lg:inValid~.form-label {
+  transform: translateY(-1.25rem) translateY(0.1rem) scale(.8);
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.form-outline .form-control~.form-label {
+  right: 15px;
+  max-width: 28%;
+}
+
+.form-outline .form-control.form-control-lg {
+  font-size: 1rem;
+  line-height: 2.15;
+  border: 1px solid #c6c6c6;
+}
+
+<<<<<<< HEAD:root/frontend/src/Components/Vendor/Vendor.css
+.btn{
+  color:white;
+  background:#7acbb9;
+  width:100%;
+=======
+.btn {
+  color: white;
+  background: #7acbb9;
+  width: 30%;
+
+>>>>>>> c7048913978bf2ce2c3d6e47e8115ee8633225f0:root/frontend/src/Components/SigninCustomers/Signin.css
+}
+
+.form-control-lg {
+  width: 100%;
+  border: 1px solid rgb(197, 197, 197);
+<<<<<<< HEAD:root/frontend/src/Components/Vendor/Vendor.css
+}
+.vendor-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.p-5 {
+  padding: 2rem!important;
+}
+=======
+} */
+>>>>>>> c7048913978bf2ce2c3d6e47e8115ee8633225f0:root/frontend/src/Components/SigninCustomers/Signin.css
