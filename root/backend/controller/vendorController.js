@@ -84,19 +84,3 @@ exports.deleteVendor = async (req, res) => {
     vendor: null,
   });
 };
-
-// register handler Function
-exports.registerVendor = async (req, res) => {
-  const newVendor = await Vendor.create(req.body);
-  res.status(201).json({
-    status: "success",
-    data: {
-      vendor: newVendor,
-    },
-  });
-};
-
-// Controller for vendor logout
-exports.vendorLogout = (req, res) => {
-  res.status(200).json({ message: "Vendor logout successful." });
-};

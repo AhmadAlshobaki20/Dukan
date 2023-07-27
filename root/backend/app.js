@@ -14,6 +14,5 @@ app.use(morgan('dev'));
 app.use("/api/v1/vendors", vendorRouter);
 app.use("/api/v1/Products", productRouter);
 app.use("/api/v1/customer",CustomerRouter);
-app.use("/api/v1/login",loginRouter);
 
 module.exports = app;

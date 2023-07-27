@@ -63,7 +63,7 @@ const Vendor = () => {
                   <h2 className="text-uppercase text-center mb-5">
                     باشر بأنشاء متجرك مع دكان
                   </h2>
-                  <form>
+                  <form className="vendor-form">
                     <div className="form-outline mb-4">
                       <input
                         type="text"

@@ -3,9 +3,9 @@ import { HeaderMegaMenu } from "./Components/Nav/Nav";
 import { FooterSocial } from "./Components/Footer/Footer";
 import { GetInTouchSimple } from "./Components/Contactus/Contactus";
 import { ArticlesCardsGrid } from "./Components/Home/Aboutus/Aboutus";
-import SignIn from "./Components/Signin/Signin"
+import SignIn from "./Components/Signin/Signin";
 import Vendor from "./Components/Vendor/Vendor";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Customers from "./Components/Signup/Customers/Customers";
 function App() {
   return (
     <div className="App">
@@ -13,13 +13,9 @@ function App() {
       <GetInTouchSimple />
       <ArticlesCardsGrid />
       <FooterSocial /> */}
-      <BrowserRouter>
-      <Routes>
-        <Route path="/store" element={<Vendor/>}/>
-        <SignIn/>
-      </Routes>  
-      </BrowserRouter>
-
+      {/* <Customers/> */}
+      {/* <SignIn /> */}
+      <Vendor />
     </div>
   );
 }

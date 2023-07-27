@@ -23,9 +23,18 @@ lg:inValid~.form-label {
 .btn{
   color:white;
   background:#7acbb9;
-  width:30%;
+  width:100%;
 }
 .form-control-lg{
   width: 100%;
   border: 1px solid rgb(197, 197, 197);
+}
+.vendor-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.p-5 {
+  padding: 2rem!important;
 }

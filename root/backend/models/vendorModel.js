@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-
+const bcrypt = require('bcrypt');
 const vendorSchema = new mongoose.Schema({
   fname: { type: String, required: true },
   lname: String,
@@ -27,6 +27,14 @@ const vendorSchema = new mongoose.Schema({
   products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
   orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "order" }],
 });
+
+// hashing the password 
+// pre('save') -> it will perform between the moment we getting data and the moment save data in dataBase
+vendorSchema.pre('save',async function(next){
+  if(!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 12)
+  next();
+})
 
 const Vendor = mongoose.model("Vendor", vendorSchema);
 

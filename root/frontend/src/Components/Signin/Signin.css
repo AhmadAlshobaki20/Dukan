@@ -1,4 +1,4 @@
-.customerBody{
+/* .customerBody{
   display: flex;
   
   justify-content: space-around;
@@ -35,5 +35,5 @@ cursor: pointer;
  width: 500px;
  height: 500px;
   background-size: cover;
-  /* background-image:url('./loginImg.png'); */
-}
+  /* background-image:url('./loginImg.png'); 
+} */
