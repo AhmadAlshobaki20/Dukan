@@ -1,0 +1,14 @@
+ .content-cart {
+   align-items: center !important;
+   justify-content: space-between !important;
+ }
+
+ .lead,
+ .small {
+   text-align: center !important;
+ }
+
+
+ .justify-content-end {
+   justify-content: space-evenly;
+ }
