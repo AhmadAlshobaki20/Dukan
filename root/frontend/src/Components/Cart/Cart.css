@@ -12,3 +12,7 @@
  .justify-content-end {
    justify-content: space-evenly;
  }
+
+ .vh-100 {
+   background-color: white !important;
+ }
