@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./Signin.css";
+import "./SigninVendor";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
