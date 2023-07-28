@@ -36,6 +36,11 @@ vendorSchema.pre('save',async function(next){
   next();
 })
 
+// create instance method -> it will be available on all document in the collection 
+vendorSchema.methods.correctPassword = async function (candidatePassword, vendorPassword){
+  return await bcrypt.compare(candidatePassword, vendorPassword)
+}
+
 const Vendor = mongoose.model("Vendor", vendorSchema);
 
 module.exports = Vendor;

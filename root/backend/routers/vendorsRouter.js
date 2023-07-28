@@ -17,6 +17,6 @@ router
   .delete(vendorController.deleteVendor);
 
 router.route("/register").post(authController.registerVendor);
-router.route("/login").get(authController.vendorLogin);
+router.route("/login").post(authController.vendorLogin);
 
 module.exports = router;

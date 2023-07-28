@@ -1,4 +1,4 @@
-/* * {
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -23,34 +23,21 @@ lg:inValid~.form-label {
   border: 1px solid #c6c6c6;
 }
 
-<<<<<<< HEAD:root/frontend/src/Components/Vendor/Vendor.css
-.btn{
-  color:white;
-  background:#7acbb9;
-  width:100%;
-=======
 .btn {
   color: white;
   background: #7acbb9;
   width: 30%;
 
->>>>>>> c7048913978bf2ce2c3d6e47e8115ee8633225f0:root/frontend/src/Components/SigninCustomers/Signin.css
 }
 
 .form-control-lg {
   width: 100%;
   border: 1px solid rgb(197, 197, 197);
-<<<<<<< HEAD:root/frontend/src/Components/Vendor/Vendor.css
-}
-.vendor-form{
+} 
+
+form {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 100%;
 }
-
-.p-5 {
-  padding: 2rem!important;
-}
-=======
-} */
->>>>>>> c7048913978bf2ce2c3d6e47e8115ee8633225f0:root/frontend/src/Components/SigninCustomers/Signin.css

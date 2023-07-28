@@ -1,4 +1,4 @@
-/* .customerBody{
+.customerBody{
   display: flex;
   
   justify-content: space-around;
@@ -35,8 +35,4 @@ cursor: pointer;
  width: 500px;
  height: 500px;
   background-size: cover;
-<<<<<<< HEAD:root/frontend/src/Components/Signin/Signin.css
-  /* background-image:url('./loginImg.png'); 
-=======
->>>>>>> c7048913978bf2ce2c3d6e47e8115ee8633225f0:root/frontend/src/Components/SigninVendor/Signin.css
-} */
+}

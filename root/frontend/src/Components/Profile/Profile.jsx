@@ -1,6 +1,6 @@
-import React from 'react'
-import './Profile.css'
-import ProfileHero from './ProfileHero'
+import React from "react";
+import "./Profile.css";
+import ProfileHero from "./ProfileHero";
 
 function Profile() {
   return (
@@ -26,12 +26,12 @@ function Profile() {
               <div>***********</div>
             </div>
           </div>
-       
+
           <button className="editButton">تعديل</button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;
