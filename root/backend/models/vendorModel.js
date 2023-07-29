@@ -23,6 +23,7 @@ const vendorSchema = new mongoose.Schema({
         "Password must be at least 8 characters with uppercase and lowercase letters",
     },
   },
+  storeName:{type: String, required: true},
   address: { type: String, required: true },
   products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
   orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "order" }],

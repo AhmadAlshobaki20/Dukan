@@ -1,35 +1,38 @@
 import "./App.css";
-import { HeaderMegaMenu } from "./Components/Nav/Nav";
-import { FooterSocial } from "./Components/Footer/Footer";
-// import { GetInTouchSimple } from "./Components/Contactus/Contactus";
-// import { ArticlesCardsGrid } from "./Components/Home/Aboutus/Aboutus";
-// import SignIn from "./Components/SigninVendor/SigninVendor";
+import HeaderMegaMenu from "./Components/Nav/Nav";
+import FooterSocial from "./Components/Footer/Footer";
+import LandingPage from "./Components/Home/LandingPage";
 import LoginVendor from "./Components/SigninVendor/SigninVendor";
 import LoginCutoumers from "./Components/SigninCustomers/SigninCustomers";
 import SignUpVendor from "./Components/Signup/Vendor/Vendor";
 import SignUpCustomers from "./Components/Signup/Customers/Customers";
-
+import Store from "./Components/Store/Store";
 import Cart from "./Components/Cart/Cart";
+import Home from "./Components/Home/Home";
+import Products from "./Components/Product/Products";
+import ProductView from "./Components/Product/ProductView";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      {/* <HeaderMegaMenu />
-      <GetInTouchSimple />
-      <ArticlesCardsGrid />
-      <FooterSocial /> */}
       <BrowserRouter>
+        <HeaderMegaMenu />
         <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/Vendor/Login" element={<LoginVendor />} />
           <Route path="/Vendor/SiginUp" element={<SignUpVendor />} />
           <Route path="/Cutoumers/Login" element={<LoginCutoumers />} />
           <Route path="/Cutoumers/SiginUp" element={<SignUpCustomers />} />
+          <Route path="/Products" element={<Products />} />
+          <Route path="/ProductView" element={<ProductView />} />
           <Route path="/Cart" element={<Cart />} />
+          <Route path="/store" element={<Store />} />
         </Routes>
+        <FooterSocial />
       </BrowserRouter>
     </div>
   );
 }
-
 
 export default App;

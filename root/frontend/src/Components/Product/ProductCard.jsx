@@ -17,25 +17,23 @@ const ProductsCard = () => {
   //number of products in each page, which is 9 in our case
   const [itemsPerPage] = useState(9);
 
-  //fetch data from json server
+  //fetch data
+
+
   useEffect(() => {
-    let isMounted = true;
-    const getProducts = async () => {
-      try {
-        const response = await fetch("");
-        if (isMounted) {
-          const jsonData = await response.clone().json();
-          setData(jsonData);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
     getProducts();
-    return () => {
-      isMounted = false;
-    };
   }, []);
+
+  const getProducts = async () => {
+    try {
+      const response = await axios.get("/api/v1/Products");
+      console.log(response.data.data.products)
+      setData(response.data.data.products)
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
 
   //display products according to the selected option
   const sortProducts = (products, sorting) => {
@@ -63,7 +61,7 @@ const ProductsCard = () => {
     e.preventDefault();
     if (ID.quantity) {
       axios
-        .get(`http://localhost:3001/Users/${sessionStorage.getItem("id")}`)
+        .get(`/api/v1/Products`)
         .then(function (response) {
           const userData = response.data;
           const isElementExists = userData.Orders.New_Cart.filter(
@@ -76,7 +74,7 @@ const ProductsCard = () => {
             userData.Orders.New_Cart.push(ID);
             // DECREMENT THE QUANTITY BY ONE, ENSURING IT DOESN'T GO BELOW ZERO
             axios
-              .get(`http://localhost:3001/Products/${ID.id}`)
+              .get(`/api/v1/Products/${ID.id}`)
               .then(function (response) {
                 const productData = response.data;
                 productData.quantity -= 1;
@@ -91,10 +89,7 @@ const ProductsCard = () => {
                   return product;
                 });
                 setData(updatedData);
-                return axios.put(
-                  `http://localhost:3001/Products/${ID.id}`,
-                  productData
-                );
+                return axios.put(`/api/v1/Products/${ID.id}`, productData);
               })
               .then((response) => {})
               .catch((error) => {});
@@ -173,4 +168,4 @@ const ProductsCard = () => {
   );
 };
 
-export default ProductsCard;
+export default ProductsCard

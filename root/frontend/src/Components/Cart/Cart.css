@@ -1,0 +1,30 @@
+ .content-cart {
+   align-items: center !important;
+   justify-content: space-between !important;
+ }
+
+ .lead,
+ .small {
+   text-align: center !important;
+ }
+
+
+ .justify-content-end {
+   justify-content: space-evenly;
+ }
+
+ .vh-100 {
+   background-color: white !important;
+ }
+
+ .d-flex {
+  display: flex!important;
+  width: 100%;
+}
+
+.vendorForm{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}

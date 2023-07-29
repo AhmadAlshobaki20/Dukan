@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const Hero = () => {
   return (
+    <>
     <div className="hero-container">
       <video src={heroVideo} autoPlay loop muted />
       <div className="content-container">
@@ -19,6 +20,7 @@ const Hero = () => {
         </NavLink>{" "}
       </div>
     </div>
+    </>
   );
 };
 

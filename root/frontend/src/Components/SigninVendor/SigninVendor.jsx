@@ -1,74 +1,49 @@
 import React, { useEffect, useState } from "react";
-import "./SigninVendor";
+import "./Signin.css";
 import axios from "axios";
-
 import { useNavigate } from "react-router-dom";
+
+
 function LoginVendor() {
+
+
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
+  const [Alldata, setAllData] = useState({
     email: "",
     password: "",
   });
-  const [email, setEmail] = useState();
 
-  const handleDataChange = (event) => {
+
+  const handlerData = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
+    setAllData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  useEffect(() => {
-    getVendors();
-  }, []);
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  const getVendors = async () => {
-    const response = await axios.get(`/api/v1/vendors`);
-    console.log();
-    const result = response.data.data.vendors.find((vendor) => {
-      return formData.email === vendor.email;
-    });
-    console.log("result", result);
-    if (result) {
-      navigate("/store");
+  // handle send email and password
+  const handlerSendData = async () => {
+    try {
+      const response = await axios.post("/api/v1/vendors/login", Alldata);
+      sessionStorage.setItem("token",JSON.stringify(response.data));
+      navigate(`/store`);
+    } catch (err) {
+      console.log("err", err);
     }
   };
-
-  const handleSignIn = async (event) => {
-    event.preventDefault();
-    try {
-      getVendors();
-      // You can store the token in localStorage, state, or a global state management library like Redux for future use.
-    } catch (err) {
-      // Handle login error here, display an error message, etc.
-    }
+  
+  const handleSubmit = (e) => {
+    console.log(token);
+    e.preventDefault();
+    handlerSendData();
   };
 
   return (
-    // <div>
-    //   <h1>تسجيل دخول</h1>
-    //   <div className="customerBody">
-    //     <form>
-    //       <label htmlFor="email">الايميل</label>
-    //       <input
-    //         type="email"
-    //         name="email"
-    //         value={formData.email}
-    //         onChange={handleDataChange}
-    //       />
-    //       <label htmlFor="password">كلمة السر</label>
-    //       <input
-    //         type="password"
-    //         name="password"
-    //         value={formData.password}
-    //         onChange={handleDataChange}
-    //       />
-    //       <button onClick={handleSignIn}>دخول</button>
-    //     </form>
-    //     <div className="img"></div>
-    //   </div>
-    // </div>
     <section
       className="vh-100 bg-image"
       style={{
@@ -85,35 +60,42 @@ function LoginVendor() {
                   <h2 className="text-uppercase text-center mb-5">
                     الدخول إلى المتجر
                   </h2>
-                  <form>
+                  <form className="vendorForm">
                     <div className="form-outline mb-4">
                       <input
-                        type="text"
+                        type="email"
                         id="form3Example1cg"
                         className="form-control-lg"
                         placeholder="الإيميل"
-                        name="fname"
-                        // value={Alldata.fname}
-                        // onChange={(e) => {
-                        //   handlerData(e);
-                        // }}
+                        name="email"
+                        value={Alldata.email}
+                        onChange={(e) => {
+                          handlerData(e);
+                        }}
                       />
                     </div>
                     <div className="form-outline mb-4">
                       <input
-                        type="text"
+                        type="password"
                         id="form3Example4cdg"
                         className="form-control-lg"
                         placeholder="كلمة المرور"
-                        name="lname"
-                        // onChange={(e) => {
-                        //   handlerData(e);
-                        // }}
-                        // value={Alldata.lname}
+                        name="password"
+                        value={Alldata.password}
+                        onChange={(e) => {
+                          handlerData(e);
+                        }}
                       />
                     </div>
                     <div className="d-flex justify-content-center">
-                      <button className="btn">تسجيل دخول</button>
+                      <button
+                        className="btn"
+                        onClick={(e) => {
+                          handleSubmit(e);
+                        }}
+                      >
+                        تسجيل دخول
+                      </button>
                     </div>
                   </form>
                 </div>

@@ -8,7 +8,7 @@ function EventsCard() {
   return (
     <>
       <div className="card-title">
-        <h1>فعاليّات</h1>
+        <h1 className="title-one">فعاليّات</h1>
       </div>
       <div className="row">
         <div className="col">

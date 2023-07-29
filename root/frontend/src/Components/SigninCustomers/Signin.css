@@ -33,11 +33,4 @@ lg:inValid~.form-label {
 .form-control-lg {
   width: 100%;
   border: 1px solid rgb(197, 197, 197);
-} 
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
 }

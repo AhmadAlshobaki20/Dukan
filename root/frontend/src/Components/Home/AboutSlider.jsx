@@ -3,8 +3,8 @@ import React from "react";
 function AboutCard() {
   return (
     <>
-      <div className="card-title">
-        <h1>عنّا</h1>
+      <div className="card-title" id="about">
+        <h1 className="title-one">عنّا</h1>
       </div>
       <div className="row">
         <div class="card about  mt-4 mx-auto " style={{ width: "18rem" }}>

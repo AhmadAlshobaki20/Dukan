@@ -10,7 +10,7 @@ function Gallery() {
   return (
     <>
       <div className="card-title">
-        <h1>المعرض</h1>
+        <h1 className="title-one">المعرض</h1>
       </div>
       <div id="carouselExampleFade" class="carousel slide carousel-fade">
         <div class="carousel-inner">

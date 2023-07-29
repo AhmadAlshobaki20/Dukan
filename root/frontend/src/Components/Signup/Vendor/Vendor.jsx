@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Vendor.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; 
 const SignUpVendor = () => {
+  const navigate = useNavigate();
   const [Alldata, setAllData] = useState({
     fname: "",
     lname: "",
@@ -34,6 +36,8 @@ const SignUpVendor = () => {
   const postVendorData = async () => {
     try {
       const response = await axios.post(`/api/v1/vendors/register`, Alldata);
+      navigate('/store')
+
     } catch (err) {
       console.log(err);
     }
@@ -49,10 +53,6 @@ const SignUpVendor = () => {
   return (
     <section
       className="vh-100 bg-image"
-      style={{
-        backgroundImage:
-          "url('https://media.discordapp.net/attachments/1125716795635027988/1133657069308887190/0-ostrich-eggs-credit-jordan-jewel-web.webp?width=993&height=662')",
-      }}
     >
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">

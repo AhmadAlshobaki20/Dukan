@@ -36,9 +36,6 @@ exports.customerLogin = async (req, res) => {
     const token = createToken(customer._id, "customer");
     res.status(200).json({
       status: "success",
-      data: {
-        query,
-      },
       token,
     });
     // Create and send the JWT token in the response
@@ -64,7 +61,7 @@ exports.customerLogout = (req, res) => {
 
 // Controller for customer registration
 exports.customerRegister = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password} = req.body;
 
   try {
     // Validate registration data
@@ -84,17 +81,21 @@ exports.customerRegister = async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+    
+      // Create a new customer and save to the database
+      const newCustomer = new Customer({
+        name,
+        email,
+        password: hashedPassword,
+      });
+      await newCustomer.save();
 
-    // Create a new customer and save to the database
-    const newCustomer = new Customer({ name, email, password: hashedPassword });
-    await newCustomer.save();
-
-    res.status(201).json({
-      status: "success",
-      data: {
-        customer: newCustomer,
-      },
-    });
+      res.status(201).json({
+        status: "success",
+        data: {
+          customer: newCustomer,
+        },
+      });
   } catch (error) {
     console.error("Error registering customer:", error.message);
     res
@@ -103,15 +104,14 @@ exports.customerRegister = async (req, res) => {
   }
 };
 
-
-// Add Orders 
+// Add Orders
 exports.updateOrder = async (req, res) => {
   try {
     const customerId = await req.params.id;
     console.log(req.body);
-    const customer = await Customer.findByIdAndUpdate(customerId, req.body,{
-      new:true
-    }).populate({path:'orders', select : '-customer -__v'});
+    const customer = await Customer.findByIdAndUpdate(customerId, req.body, {
+      new: true,
+    }).populate({ path: "orders", select: "-customer -__v" });
     res.status(200).json({
       data: {
         customer,

@@ -8,8 +8,8 @@ function CategoryCard() {
   return (
     <>
       <div className="card-title">
-        <h1>منتجات مصنوعة بِحُب</h1>
-        <p>سعداء لأن اختيارك وقع على دكان، نتمنى لك تجربة تسوق رائعة!</p>
+        <h1 className="title-one">منتجات مصنوعة بِحُب</h1>
+        <p className="title-one">سعداء لأن اختيارك وقع على دكان، نتمنى لك تجربة تسوق رائعة!</p>
       </div>
       <div className="row">
         <div className="col">

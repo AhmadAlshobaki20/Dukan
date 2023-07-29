@@ -4,9 +4,8 @@ const productSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, required: true, min: 0 },
-  // imageUrl: { type: string, required: true },
-  quantity: { type: Number, required: true, min: 1 },
-  // orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
+  quantity: { type: Number, min: 1 },
+  Image:{type:String,required:true}
 });
 
 const Product = mongoose.model("Product", productSchema);

@@ -11,6 +11,9 @@ lg:invalid ~ .form-label {
 .h-100 {
   height: 100% !important;
 }
+.vh-100 {
+  background-image: "url('https://media.discordapp.net/attachments/1125716795635027988/1133657069308887190/0-ostrich-eggs-credit-jordan-jewel-web.webp?width=993&height=662')";
+}
 
 .form-outline .form-control ~ .form-label {
   right: 15px;
@@ -36,19 +39,11 @@ lg:invalid ~ .form-label {
 
 .align-items-center {
   align-items: center !important;
-  justify-content: space-between !important;
+  /* justify-content: space-between !important; */
 }
-
 .vendor-form {
-  width: 100%;
-}
-
-.align-items-center {
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.justify-content-center {
-  justify-content: center !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
 }

@@ -16,6 +16,7 @@ exports.registerVendor = async (req, res) => {
     password: req.body.password,
     address: req.body.address,
     products: req.body.products,
+    storeName: req.body.storeName,
     orders: req.body.orders,
   });
   // create token
@@ -47,20 +48,18 @@ exports.vendorLogin = async (req, res) => {
     //2) check user and password is correct
     const Ven = await Vendor.findOne({ email });
     const correct = await Ven.correctPassword(password, Ven.password);
-    console.log(Ven)
+    console.log(Ven);
     if (!Ven || !correct) {
       return res.status(400).json({
         message: "incorrect password or email",
       });
-    }    
+    }
     const token = signing(Ven._id);
     // 3)everything ok , send token\
     return res.status(200).json({
-      token
+      token,
     });
-
   } catch (err) {
-    console.log(err)
     res.status(400).json({
       status: "fail",
       data: {

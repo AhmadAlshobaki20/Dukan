@@ -13,7 +13,6 @@ const customerSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 8,
     validate: {
       validator: function (value) {
         return /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(value);
@@ -22,6 +21,11 @@ const customerSchema = new mongoose.Schema({
         "Password must be at least 8 characters with uppercase and lowercase letters",
     },
   },
+  // rePassword: {
+  //   type: String,
+  //   required: [true, "please confirm your password"],
+  // },
+
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -29,6 +33,7 @@ const customerSchema = new mongoose.Schema({
     },
   ],
 });
+
 
 const Customer = mongoose.model("Customer", customerSchema);
 

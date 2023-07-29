@@ -1,8 +1,7 @@
 import React from "react";
 import "./Home.css";
 import heroImg from "../../Images/heroImg.jpg";
-import { NavLink } from "@mantine/core";
-
+import { Link } from "react-router-dom";
 const HeroImg = () => {
   return (
     <div className="hero-container">
@@ -13,14 +12,14 @@ const HeroImg = () => {
           <span className="dukan">دكان</span> نكتشف الفن في كل يد
         </p>
 
-        <NavLink to={`/Customers`} className="card-link">
+        <Link to={`/Cutoumers/SiginUp`} className="card-link">
           {" "}
           <button className="cta-button">سجل الآن</button>
-        </NavLink>
-        <NavLink to={`/Aboutus`} className="card-link">
+        </Link>
+        <Link to={`/Aboutus`} className="card-link">
           {" "}
-          <button className="cta-button">اعرف أكثر </button>
-        </NavLink>
+          <button className="cta-button">اعرف أكثر</button>
+        </Link>
       </div>
     </div>
   );
