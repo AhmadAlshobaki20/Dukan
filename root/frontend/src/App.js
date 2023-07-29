@@ -12,6 +12,7 @@ import Home from "./Components/Home/Home";
 import Products from "./Components/Product/Products";
 import ProductView from "./Components/Product/ProductView";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProductViewView from "./Components/Product/ProductView";
 function App() {
   return (
     <div className="App">
@@ -28,6 +29,7 @@ function App() {
           <Route path="/ProductView" element={<ProductView />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/store" element={<Store />} />
+          <Route path="/products/:productId" element={<ProductViewView />} />
         </Routes>
         <FooterSocial />
       </BrowserRouter>

@@ -41,16 +41,16 @@ const Store = () => {
   // getProducts
   const getProducts = async () => {
     const response = await axios.get("/api/v1/products");
-    setProducts([... response.data.data.products]);
+    setProducts([...response.data.data.products]);
   };
 
-useEffect(() => {
+  useEffect(() => {
     getProducts();
-  },[]);
+  }, []);
 
   const handleLogOut = () => {
     Navigate("/Vendor/Login");
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem("token");
   };
 
   const handleSubmit = (event) => {
@@ -133,9 +133,10 @@ useEffect(() => {
         </div>
       </section>
       <section>
-        {products && (products.map((VendorProduct)=>{
-          return(<div>{VendorProduct.price}</div>)
-        }))}
+        {products &&
+          products.map((VendorProduct) => {
+            return <div>{VendorProduct.price}</div>;
+          })}
       </section>
     </>
   );

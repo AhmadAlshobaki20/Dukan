@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import SortByPrice from "./SortProducts";
+import { Link } from "react-router-dom";
 import Pagination from "./Pagination";
 import axios from "axios";
 import swal from "sweetalert";
@@ -19,7 +20,6 @@ const ProductsCard = () => {
 
   //fetch data
 
-
   useEffect(() => {
     getProducts();
   }, []);
@@ -27,13 +27,12 @@ const ProductsCard = () => {
   const getProducts = async () => {
     try {
       const response = await axios.get("/api/v1/Products");
-      console.log(response.data.data.products)
-      setData(response.data.data.products)
+      console.log(response.data.data.products);
+      setData(response.data.data.products);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-
 
   //display products according to the selected option
   const sortProducts = (products, sorting) => {
@@ -57,54 +56,54 @@ const ProductsCard = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   //add product in user cart
-  function InsertCart(e, ID) {
-    e.preventDefault();
-    if (ID.quantity) {
-      axios
-        .get(`/api/v1/Products`)
-        .then(function (response) {
-          const userData = response.data;
-          const isElementExists = userData.Orders.New_Cart.filter(
-            (ele) => ele.id == ID.id
-          );
-          if (isElementExists.length) {
-            swal("تمت إضافة المنتج سابقًا!", "", "error");
-          } else {
-            swal("تمت إضافة المنتج بنجاح", "", "success");
-            userData.Orders.New_Cart.push(ID);
-            // DECREMENT THE QUANTITY BY ONE, ENSURING IT DOESN'T GO BELOW ZERO
-            axios
-              .get(`/api/v1/Products/${ID.id}`)
-              .then(function (response) {
-                const productData = response.data;
-                productData.quantity -= 1;
-                // UPDATE THE DATA ARRAY WITH THE NEW QUANTITY VALUE
-                const updatedData = data.map((product) => {
-                  if (product.id === ID.id) {
-                    return {
-                      ...product,
-                      quantity: productData.quantity,
-                    };
-                  }
-                  return product;
-                });
-                setData(updatedData);
-                return axios.put(`/api/v1/Products/${ID.id}`, productData);
-              })
-              .then((response) => {})
-              .catch((error) => {});
-            return axios.put(
-              `http://localhost:3001/Users/${sessionStorage.getItem("id")}`,
-              userData
-            );
-          }
-        })
-        .then((response) => {})
-        .catch((error) => {});
-    } else {
-      swal("نفذ من المخزون، سيتوفر المنتج قريبًا", "", "error");
-    }
-  }
+  // function InsertCart(e, ID) {
+  //   e.preventDefault();
+  //   if (ID.quantity) {
+  //     axios
+  //       .get(`/api/v1/Products`)
+  //       .then(function (response) {
+  //         const userData = response.data;
+  //         const isElementExists = userData.Orders.New_Cart.filter(
+  //           (ele) => ele.id == ID.id
+  //         );
+  //         if (isElementExists.length) {
+  //           swal("تمت إضافة المنتج سابقًا!", "", "error");
+  //         } else {
+  //           swal("تمت إضافة المنتج بنجاح", "", "success");
+  //           userData.Orders.New_Cart.push(ID);
+  //           // DECREMENT THE QUANTITY BY ONE, ENSURING IT DOESN'T GO BELOW ZERO
+  //           axios
+  //             .get(`/api/v1/Products/${ID.id}`)
+  //             .then(function (response) {
+  //               const productData = response.data;
+  //               productData.quantity -= 1;
+  //               // UPDATE THE DATA ARRAY WITH THE NEW QUANTITY VALUE
+  //               const updatedData = data.map((product) => {
+  //                 if (product.id === ID.id) {
+  //                   return {
+  //                     ...product,
+  //                     quantity: productData.quantity,
+  //                   };
+  //                 }
+  //                 return product;
+  //               });
+  //               setData(updatedData);
+  //               return axios.put(`/api/v1/Products/${ID.id}`, productData);
+  //             })
+  //             .then((response) => {})
+  //             .catch((error) => {});
+  //           return axios.put(
+  //             `http://localhost:3001/Users/${sessionStorage.getItem("id")}`,
+  //             userData
+  //           );
+  //         }
+  //       })
+  //       .then((response) => {})
+  //       .catch((error) => {});
+  //   } else {
+  //     swal("نفذ من المخزون، سيتوفر المنتج قريبًا", "", "error");
+  //   }
+  // }
 
   return (
     <>
@@ -123,33 +122,23 @@ const ProductsCard = () => {
                       to={`/productCard/${product.id}`}
                       className="card-link"
                     >
-                      <img
+                      {/* <img
                         src={product.image}
                         className="card-img-top"
                         alt={product.title}
                         height="250px"
-                      />
+                      /> */}
                     </NavLink>
                     <div className="ps-4 mb-3">
                       <h5 className="card-title mb-0 pb-3">{product.title}</h5>
                       <div className="d-flex gap-4 align-items-baseline">
                         <p className="card-text">${product.price} JOD</p>
                       </div>
-                      <a
-                        href="#"
-                        className="text-decoration-none ps-3 pe-3 pt-2 pb-2 text-white rounded-2"
-                        style={{ backgroundColor: "#25B0B5" }}
-                        onClick={(e) => {
-                          InsertCart(e, {
-                            id: product.id,
-                            title: product.title,
-                            category: product.category,
-                            price: product.price,
-                            image: product.image,
-                            quantity: product.quantity,
-                          });
-                        }}
-                      ></a>
+                      <div>
+                        <Link to={`${product._id}`}>
+                          <button className="btn">details</button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -168,4 +157,4 @@ const ProductsCard = () => {
   );
 };
 
-export default ProductsCard
+export default ProductsCard;

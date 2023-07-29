@@ -3,6 +3,11 @@
   gap: 10px;
 }
 
+.image-preview {
+  max-width: 100%;
+  max-height: 173px;
+}
+
 #sort-select {
   border-radius: 6px;
 }
@@ -52,6 +57,7 @@ option:hover {
 .pheader:hover {
   color: rgba(255, 225, 106, 1);
 }
+
 /* Pagination style*/
 
 .page-item .page-link {
@@ -159,18 +165,21 @@ option:hover {
   flex-direction: column;
   gap: 15px;
 }
+
 .heroProfileImg .h1 {
   position: relative;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
   float: right;
 }
+
 .ps-4 {
   margin: 0 auto;
   width: 80%;
 }
 
-.card-subtitle, .card-text:last-child {
+.card-subtitle,
+.card-text:last-child {
   margin-bottom: 9px;
 }

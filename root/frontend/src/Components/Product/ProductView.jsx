@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import "./Product.css";
+import { Link } from "react-router-dom";
+import "./productdetalis.css";
 import axios from "axios";
 import swal from "sweetalert";
 
 export default function ProductView() {
-  const { id } = useParams();
+  const params = useParams();
   const [Products, setProduct] = useState([]);
 
   //fetch the products data using id of this product
   useEffect(() => {
     const getProducts = async () => {
-      const response = await fetch(`http://localhost:3001/Products/${id}`);
-      setProduct(await response.json());
+      const response = await axios.get(`/api/v1/products/${params.productId}`);
+      // console.log(params);
+      console.log(response.data.data.products);
+
+      setProduct(response.data.data.products);
     };
 
     getProducts();
   }, []);
 
-  const sleeves = () => {
-    if (Products.sleeves === null) {
-      return "";
-    } else if (Products.sleeves) {
-      return (
-        <div>
-          <p className="fw-bolder fs-5">Sleeves</p>
-          <p>{Products.sleeves}</p>
-        </div>
-      );
-    } else {
-      return "";
-    }
-  };
+  // const sleeves = () => {
+  //   if (Products.sleeves === null) {
+  //     return "";
+  //   } else if (Products.sleeves) {
+  //     return (
+  //       <div>
+  //         <p className="fw-bolder fs-5">Sleeves</p>
+  //         <p>{Products.sleeves}</p>
+  //       </div>
+  //     );
+  //   } else {
+  //     return "";
+  //   }
+  // };
 
   function InsertCart(e, ID) {
     e.preventDefault();
@@ -88,58 +92,19 @@ export default function ProductView() {
 
   return (
     <>
-      {/* display products details */}
-      <div className="container mt-3 mb-5">
-        <div className="mb-3">
-          <NavLink to={`/Products/`} className="card-link mb">
-            <i
-              className="fa-solid fa-arrow-left fa-xl"
-              style={{ color: "#374151" }}
-            ></i>
-            {/* navigate from the img to product view component */}
-          </NavLink>
-        </div>
-        <div className="row">
-          <div className="col-12 col-lg-6">
-            <img
-              src={Products.image}
-              alt={Products.title}
-              height="100%"
-              width="100%"
-            />
+      <section className="sectondetalsproduct">
+        <div className="card-Details">
+          {/* <img className="img-product" src={productDet.image} alt="" /> */}
+          <div className="ContentCardProduct">
+            <h3>{Products.title}</h3>
+            <p>{Products.description}</p>
+            <p> {`Price $${Products.price}`}</p>
           </div>
-          <div className="col-lg-6">
-            <h4 className="display-5 fw-bolder">{Products.title}</h4>
-            <p className="text lead fs-6">{Products.description}</p>
-
-            <hr />
-            <div className="mb-5 mt-5 text-center">
-              <h3 className="fw-bolder m-0" id="price">
-                ${Products.price} JOD
-              </h3>
-            </div>
-
-            <button className=" btnView display-6 mb-5 ms-3 w-100 border border-0">
-              <a
-                href="#"
-                className="fw-semibold text-white"
-                onClick={(e) =>
-                  InsertCart(e, {
-                    id: Products.id,
-                    title: Products.title,
-                    price: Products.price,
-                    image: Products.image,
-                    quantity: Products.quantity,
-                  })
-                }
-              >
-                أضف إلى السلة
-              </a>
-            </button>
-            <br />
-          </div>
+          <Link className="AddtoCart" to="/">
+            Continue to add cart{" "}
+          </Link>
         </div>
-      </div>
+      </section>
     </>
   );
 }
