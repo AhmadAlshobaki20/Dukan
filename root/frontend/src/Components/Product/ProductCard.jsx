@@ -122,12 +122,6 @@ const ProductsCard = () => {
                       to={`/productCard/${product.id}`}
                       className="card-link"
                     >
-                      {/* <img
-                        src={product.image}
-                        className="card-img-top"
-                        alt={product.title}
-                        height="250px"
-                      /> */}
                     </NavLink>
                     <div className="ps-4 mb-3">
                       <h5 className="card-title mb-0 pb-3">{product.title}</h5>

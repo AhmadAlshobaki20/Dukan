@@ -12,6 +12,11 @@ const orderController = require('./../controller/orderController');
 router
 .route('/')
 .get(customerController.getAllCustomer)
+
+router
+.route('/:id')
+.post(customerController.setOrder)
+
 router
 .route('/register')
 .post(customerController.customerRegister);

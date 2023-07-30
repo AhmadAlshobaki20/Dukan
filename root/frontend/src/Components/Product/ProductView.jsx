@@ -1,42 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./productdetalis.css";
-import axios from "axios";
+import axios, { all } from "axios";
 import swal from "sweetalert";
 
 export default function ProductView() {
   const params = useParams();
-  const [Products, setProduct] = useState([]);
+  const [Products, setProduct] = useState({});
+  // const [ArrayProducts, setArrayProducts] = useState([]);
 
   //fetch the products data using id of this product
   useEffect(() => {
     const getProducts = async () => {
       const response = await axios.get(`/api/v1/products/${params.productId}`);
-      // console.log(params);
-      console.log(response.data.data.products);
-
       setProduct(response.data.data.products);
     };
 
     getProducts();
   }, []);
 
-  // const sleeves = () => {
-  //   if (Products.sleeves === null) {
-  //     return "";
-  //   } else if (Products.sleeves) {
-  //     return (
-  //       <div>
-  //         <p className="fw-bolder fs-5">Sleeves</p>
-  //         <p>{Products.sleeves}</p>
-  //       </div>
-  //     );
-  //   } else {
-  //     return "";
-  //   }
-  // };
+  const addToCart = () => {
+    if(Products){
+      const allProduct = JSON.parse(sessionStorage.getItem("Products")) || []
+      allProduct.push(Products);
+      sessionStorage.setItem('Products',JSON.stringify(allProduct));
+    }
+  };
 
   function InsertCart(e, ID) {
     e.preventDefault();
@@ -100,8 +90,13 @@ export default function ProductView() {
             <p>{Products.description}</p>
             <p> {`Price $${Products.price}`}</p>
           </div>
-          <Link className="AddtoCart" to="/">
-            Continue to add cart{" "}
+          <Link
+            className="AddtoCart"
+            onClick={() => {
+              addToCart();
+            }}
+          >
+            حط المنتج فالسلة{" "}
           </Link>
         </div>
       </section>

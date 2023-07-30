@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+@import url('https://linear-gradient(to right, rgba(164, 212, 155, 1), rgba(117, 200, 182, 1)),fonts.googleapis.com/css2?family=Cairo&display=swap');
 
 
 
 :root {
-  --PrimaryColor: linear-gradient(to right, rgba(164, 212, 155, 1), rgba(117, 200, 182, 1)),
+  --PrimaryColor: 
     --Primery-bg-btn: linear-gradient(to right, rgba(164, 212, 155, 1), rgba(117, 200, 182, 1)),
     --Secondery-bg-btn: rgb(117, 201, 183),
     --Hover-Nav-Footer: rgba(255, 225, 106, 1),

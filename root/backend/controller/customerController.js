@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const Vendor = require("./../");
 const Customer = require("../models/customer");
 const bcrypt = require("bcrypt");
+const { json } = require("express");
 
 const createToken = (id, role) => {
   return jwt.sign({ id, role }, "AAA123456", { expiresIn: "1h" }); // Token expiration
@@ -15,6 +16,22 @@ exports.getAllCustomer = async (req, res) => {
       query,
     },
   });
+};
+
+//
+
+exports.setOrder = async (req, res) => {
+  try {
+    const currentCustomer = await Customer.findById(req.params.id);
+    const newProduct = req.body;
+    res.status(200),
+      json({
+        status: "success",
+        data: {
+          newProduct,
+        },
+      });
+  } catch (err) {}
 };
 
 // Controller for customer login
@@ -61,7 +78,7 @@ exports.customerLogout = (req, res) => {
 
 // Controller for customer registration
 exports.customerRegister = async (req, res) => {
-  const { name, email, password} = req.body;
+  const { name, email, password } = req.body;
 
   try {
     // Validate registration data
@@ -81,21 +98,21 @@ exports.customerRegister = async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    
-      // Create a new customer and save to the database
-      const newCustomer = new Customer({
-        name,
-        email,
-        password: hashedPassword,
-      });
-      await newCustomer.save();
 
-      res.status(201).json({
-        status: "success",
-        data: {
-          customer: newCustomer,
-        },
-      });
+    // Create a new customer and save to the database
+    const newCustomer = new Customer({
+      name,
+      email,
+      password: hashedPassword,
+    });
+    await newCustomer.save();
+
+    res.status(201).json({
+      status: "success",
+      data: {
+        customer: newCustomer,
+      },
+    });
   } catch (error) {
     console.error("Error registering customer:", error.message);
     res

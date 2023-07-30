@@ -21,11 +21,6 @@ const customerSchema = new mongoose.Schema({
         "Password must be at least 8 characters with uppercase and lowercase letters",
     },
   },
-  // rePassword: {
-  //   type: String,
-  //   required: [true, "please confirm your password"],
-  // },
-
   orders: [
     {
       type: mongoose.Schema.Types.ObjectId,

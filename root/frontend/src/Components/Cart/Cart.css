@@ -1,30 +1,48 @@
- .content-cart {
-   align-items: center !important;
-   justify-content: space-between !important;
- }
-
- .lead,
- .small {
-   text-align: center !important;
- }
-
-
- .justify-content-end {
-   justify-content: space-evenly;
- }
-
- .vh-100 {
-   background-color: white !important;
- }
-
- .d-flex {
-  display: flex!important;
-  width: 100%;
+#buy {
+  --tw-bg-opacity: 1;
+  background: linear-gradient(
+    to right,
+    rgba(164, 212, 155, 1),
+    rgba(117, 200, 182, 1)
+  ) !important;
 }
 
-.vendorForm{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
+.bebo {
+  background: #f0de72 !important;
+  color: white !important;
+  border-radius:5px;
+  font-weight: 600;
+}
+.ms-3 {
+  margin-right: 16px;
+}
+.col-lg-7 {
+  height: 400px;
+  overflow-y: scroll;
+}
+.bebo {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f0de72;
 }
