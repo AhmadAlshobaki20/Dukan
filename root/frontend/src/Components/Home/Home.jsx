@@ -5,7 +5,7 @@ import CategoryCard from "./CategoryCard";
 import EventsCard from "./Events";
 import AboutCard from "./AboutSlider";
 import Gallery from "./Gallery";
-
+import ImageFocus from "./GalaryFocus";
 function Home() {
   return (
     <>
@@ -14,6 +14,7 @@ function Home() {
       <AboutCard />
       <EventsCard />
       <Gallery />
+      <ImageFocus />
     </>
   );
 }

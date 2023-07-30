@@ -19,3 +19,7 @@ a {
   margin-top: 0;
   border-top: 0.0625rem solid #e9ecef;
 }
+
+.logo img {
+  width: 7em !important;
+}

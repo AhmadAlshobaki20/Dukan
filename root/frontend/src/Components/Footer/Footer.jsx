@@ -5,7 +5,7 @@ import {
   IconBrandInstagram,
 } from "@tabler/icons-react";
 import "./Footer.css";
-import logo from "../../Images/logo.png";
+import Logo from "../../Images/logonew.png";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -49,7 +49,7 @@ export default function FooterSocial() {
         <div className="logo">
           <img
             style={{ width: "12em", height: "auto" }}
-            src={logo}
+            src={Logo}
             alt="logo-image"
           />
         </div>
