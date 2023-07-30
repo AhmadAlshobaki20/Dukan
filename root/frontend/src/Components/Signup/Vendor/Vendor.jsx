@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Vendor.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 const SignUpVendor = () => {
   const navigate = useNavigate();
   const [Alldata, setAllData] = useState({
@@ -36,8 +36,7 @@ const SignUpVendor = () => {
   const postVendorData = async () => {
     try {
       const response = await axios.post(`/api/v1/vendors/register`, Alldata);
-      navigate('/store')
-
+      navigate("/store");
     } catch (err) {
       console.log(err);
     }
@@ -51,13 +50,11 @@ const SignUpVendor = () => {
     console.log(Alldata);
   };
   return (
-    <section
-      className="vh-100 bg-image"
-    >
+    <section className="vh-100 bg-image">
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div className="col-12 col-md-9 col-xl-6">
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">

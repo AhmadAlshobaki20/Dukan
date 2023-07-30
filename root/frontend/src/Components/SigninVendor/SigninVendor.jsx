@@ -3,16 +3,12 @@ import "./Signin.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 function LoginVendor() {
-
-
   const navigate = useNavigate();
   const [Alldata, setAllData] = useState({
     email: "",
     password: "",
   });
-
 
   const handlerData = (event) => {
     const { name, value } = event.target;
@@ -23,20 +19,20 @@ function LoginVendor() {
   };
 
   const token = JSON.parse(sessionStorage.getItem("token"));
-  
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
   // handle send email and password
   const handlerSendData = async () => {
     try {
       const response = await axios.post("/api/v1/vendors/login", Alldata);
-      sessionStorage.setItem("token",JSON.stringify(response.data));
+      sessionStorage.setItem("token", JSON.stringify(response.data));
       navigate(`/store`);
     } catch (err) {
       console.log("err", err);
     }
   };
-  
+
   const handleSubmit = (e) => {
     console.log(token);
     e.preventDefault();
@@ -54,7 +50,7 @@ function LoginVendor() {
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div className="col-12 col-md-9 col-xl-6">
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">

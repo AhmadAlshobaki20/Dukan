@@ -16,9 +16,9 @@ const HeroImg = () => {
           {" "}
           <button className="cta-button">سجل الآن</button>
         </Link>
-        <Link to={`/Aboutus`} className="card-link">
+        <Link to={`/Vendor/SiginUp`} className="card-link">
           {" "}
-          <button className="cta-button">اعرف أكثر</button>
+          <button className="cta-button">انشئ متجرك</button>
         </Link>
       </div>
     </div>

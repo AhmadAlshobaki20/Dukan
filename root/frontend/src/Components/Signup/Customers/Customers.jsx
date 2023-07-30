@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const SignUpCustomers = () => {
-
   const navigate = useNavigate();
   const [Alldata, setAllData] = useState({
     name: "",
@@ -36,9 +35,9 @@ const SignUpCustomers = () => {
   const postCustomerData = async () => {
     try {
       const response = await axios.post(`/api/v1/customer/register`, Alldata);
-      navigate('/Products');
+      navigate("/Products");
     } catch (err) {
-      console.log("-----------" , err);
+      console.log("-----------", err);
     }
   };
 
@@ -60,14 +59,14 @@ const SignUpCustomers = () => {
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div className="col-12 col-md-9  col-xl-6">
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">
                     إنشاء حساب عميل
                   </h2>
                   <form onSubmit={handlerSubmit}>
-                    <div className="form-outline mb-4" >
+                    <div className="form-outline mb-4">
                       <input
                         type="text"
                         id="form3Example1cg"

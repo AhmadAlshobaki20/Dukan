@@ -7,7 +7,6 @@ import "./Nav.css";
 const Nav = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <HashLink smooth to='/Home#'>Dukan</HashLink>
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -42,6 +41,9 @@ const Nav = () => {
             </li>
           </ul>
         </div>
+        <HashLink smooth to="/Home#" className="Logo">
+          Dukan
+        </HashLink>
       </div>
     </nav>
   );
