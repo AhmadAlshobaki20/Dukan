@@ -20,10 +20,54 @@ a {
   border-top: 0.0625rem solid #e9ecef;
 }
 
-.logo img {
+.Logo-footer img {
   width: 7em !important;
 }
 
+<<<<<<< HEAD
+#Logo-footer {
+  width: 150px;
+}
+
+.bg-light {
+  /* background: linear-gradient(to right, rgba(164, 212, 155, 1), rgba(117, 200, 182, 1)) !important */
+}
+
+nav {
+  padding: 10px 60px !important;
+}
+
+.navbar-nav {
+  gap: 40px;
+  font-weight: 600;
+}
+
+.Logo-footer {
+  font-family: 800 !important;
+  font-size: 20px;
+}
+
+.Logo-footer::first-letter {
+  font-size: 30px;
+}
+
+
+a:hover {
+  color: rgb(255, 255, 255);
+}
+
+
+#logo-logo{
+  display: flex;
+  align-items: center;  
+  }
+  #logo-logo #Logo-footer-log{
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    font-size: larger;
+  }
+=======
 .mantine-11pjd7j {
   margin-top: 100px;
 }
+>>>>>>> b81fcc56d96e61e3b6bd6eeb7eafda9b8fbe3236

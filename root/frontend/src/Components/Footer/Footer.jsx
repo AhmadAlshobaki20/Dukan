@@ -6,6 +6,7 @@ import {
 } from "@tabler/icons-react";
 import "./Footer.css";
 import Logo from "../../Images/logonew.png";
+import { HashLink } from "react-router-hash-link";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -46,12 +47,11 @@ export default function FooterSocial() {
       className={classes.footer}
     >
       <Container className={classes.inner}>
-        <div className="logo">
-          <img
-            style={{ width: "12em", height: "auto" }}
-            src={Logo}
-            alt="logo-image"
-          />
+      <div id="logo-logo">
+        <HashLink smooth to="/Home#" className="Logo-footer">
+        <span id="Logo-footer-log">دُكان</span>
+        </HashLink>
+          <img src={Logo} alt="" />
         </div>
         <div className="links">
           <a href="src\Components\Product\Product.jsx">تسوق</a>

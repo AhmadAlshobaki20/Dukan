@@ -1,51 +1,45 @@
 import React, { useEffect, useState } from "react";
 import "./Signin.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import axios from "axios";
 const LoginCutoumers = () => {
-  // const [Alldata, setAllData] = useState({
-  //   fname: "",
-  //   lname: "",
-  //   phone: "",
-  //   storeName: "",
-  //   email: "",
-  //   password: "",
-  //   address: "",
-  // });
+  const token = sessionStorage.getItem("customer-token");
 
-  // const handlerData = (event) => {
-  //   const { name, value } = event.target;
-  //   setAllData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
+  const Navigate = useNavigate();
+  const [Alldata, setAllData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handlerData = (event) => {
+    const { name, value } = event.target;
+    setAllData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
   // useEffect(() => {
   //   getVendorData();
   // }, []);
 
-  // const getVendorData = async () => {
-  //   try {
-  //     const response = await axios.get(`/api/v1/vendors`);
-  //     console.log(response.data.data);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // const postVendorData = async () => {
-  //   try {
-  //     const response = await axios.post(`/api/v1/vendors/register`, Alldata);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const handlerSendData = async () => {
+    try {
+      const response = await axios.post("/api/v1/customer/login", Alldata);
+      sessionStorage.setItem("customer-token", JSON.stringify(response.data));
+      console.log(JSON.parse(sessionStorage.getItem("customer-token")));
+      // Navigate(`/`);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
 
   // // handlerSubmit
-  // const handlerSubmit = (event) => {
-  //   event.preventDefault();
-  //   postVendorData();
-  //   console.log("done");
-  //   console.log(Alldata);
-  // };
+  const handlerSubmit = (event) => {
+    event.preventDefault();
+    handlerSendData();
+    console.log("done");
+  };
   return (
     <section
       className="vh-100 bg-image"
@@ -70,28 +64,24 @@ const LoginCutoumers = () => {
                         id="form3Example1cg"
                         className="form-control-lg"
                         placeholder="الإيميل"
-                        name="fname"
-                        // value={Alldata.fname}
-                        // onChange={(e) => {
-                        //   handlerData(e);
-                        // }}
+                        name="email"
+                        onChange={handlerData}
                       />
                     </div>
                     <div className="form-outline mb-4">
                       <input
-                        type="text"
+                        type="password"
                         id="form3Example4cdg"
                         className="form-control-lg"
                         placeholder="كلمة المرور"
-                        name="lname"
-                        // onChange={(e) => {
-                        //   handlerData(e);
-                        // }}
-                        // value={Alldata.lname}
+                        name="password"
+                        onChange={handlerData}
                       />
                     </div>
                     <div className="d-flex justify-content-center">
-                      <button className="btn">تسجيل دخول</button>
+                      <button className="btn" onClick={handlerSubmit}>
+                        تسجيل دخول
+                      </button>
                     </div>
                   </form>
                 </div>

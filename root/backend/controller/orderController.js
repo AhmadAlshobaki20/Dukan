@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const Order = require("./../models/order");
 const Customer = require("../models/customer");
 const Vendor = require("../models/vendorModel");
-
+const jwt = require("jsonwebtoken");
 // add order
 
 exports.AddOrder = async (req, res) => {
+  // create new token 
+  const token = jwt.sign() 
   try {
     newOrder = await Order.create(req.body);
     res.status(201).json({
@@ -32,7 +34,6 @@ exports.getAllOrdersCustomer = async (req, res) => {
     console.log(err);
   }
 };
-
 
 exports.getAllOrdersVendor = async (req, res) => {
   const Vendor = await Vendor.find(req.body);

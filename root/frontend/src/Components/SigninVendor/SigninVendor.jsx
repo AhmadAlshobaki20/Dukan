@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Signin.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, redirect } from "react-router-dom";
 
 function LoginVendor() {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ function LoginVendor() {
     }));
   };
 
-  const token = JSON.parse(sessionStorage.getItem("token"));
+  const token = JSON.parse(sessionStorage.getItem("vendor_token"));
 
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -26,7 +26,7 @@ function LoginVendor() {
   const handlerSendData = async () => {
     try {
       const response = await axios.post("/api/v1/vendors/login", Alldata);
-      sessionStorage.setItem("token", JSON.stringify(response.data));
+      sessionStorage.setItem("vendor_token", JSON.stringify(response.data));
       navigate(`/store`);
     } catch (err) {
       console.log("err", err);
