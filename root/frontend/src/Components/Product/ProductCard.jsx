@@ -1,59 +1,59 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import SortByPrice from "./SortProducts";
-import { Link } from "react-router-dom";
-import Pagination from "./Pagination";
-import axios from "axios";
-import swal from "sweetalert";
+import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
+import SortByPrice from './SortProducts'
+import { Link } from 'react-router-dom'
+import Pagination from './Pagination'
+import axios from 'axios'
+import swal from 'sweetalert'
 
 //display products as cards
 const ProductsCard = () => {
   //Variable declaration
   // to hold fetched data
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
   //sorting based on price
-  const [sorting, setSorting] = useState("low-price");
+  const [sorting, setSorting] = useState('low-price')
   //current page number
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
   //number of products in each page, which is 9 in our case
-  const [itemsPerPage] = useState(9);
+  const [itemsPerPage] = useState(9)
 
   //fetch data
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    getProducts()
+  }, [])
 
   const getProducts = async () => {
     try {
-      const response = await axios.get("/api/v1/Products");
-      console.log(response.data.data.products);
-      setData(response.data.data.products);
+      const response = await axios.get('/api/v1/Products')
+      console.log(response.data.data.products)
+      setData(response.data.data.products)
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error('Error fetching data:', error)
     }
-  };
+  }
 
   //display products according to the selected option
   const sortProducts = (products, sorting) => {
-    if (sorting === "low-price") {
-      return [...products].sort((a, b) => a.price - b.price);
-    } else if (sorting === "high-price") {
-      return [...products].sort((a, b) => b.price - a.price);
+    if (sorting === 'low-price') {
+      return [...products].sort((a, b) => a.price - b.price)
+    } else if (sorting === 'high-price') {
+      return [...products].sort((a, b) => b.price - a.price)
     } else {
-      return products;
+      return products
     }
-  };
+  }
 
-  const sortedData = sortProducts(data, sorting);
+  const sortedData = sortProducts(data, sorting)
 
   //pagination
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = sortedData.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = sortedData.slice(indexOfFirstItem, indexOfLastItem)
 
   //move from the current page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   //add product in user cart
   // function InsertCart(e, ID) {
@@ -122,6 +122,11 @@ const ProductsCard = () => {
                       to={`/productCard/${product.id}`}
                       className="card-link"
                     ></NavLink>
+                    <img
+                      style={{ width: '100%', height: '200px' }}
+                      src={product.Image}
+                      alt=""
+                    />
                     <div className="ps-4 mb-3">
                       <h5 className="card-title mb-0 pb-3">{product.title}</h5>
                       <div className="d-flex gap-4 align-items-baseline">
@@ -147,7 +152,7 @@ const ProductsCard = () => {
         />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ProductsCard;
+export default ProductsCard
