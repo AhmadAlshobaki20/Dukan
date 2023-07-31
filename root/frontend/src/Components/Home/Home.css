@@ -5,11 +5,11 @@ body {
   margin: 0;
 }
 
-/*Hero img style*/
 .hero-container {
   position: relative;
   width: 100%;
-  height: 70vh;
+
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -35,9 +35,11 @@ body {
   font-size: 3rem;
   color: #fff;
 }
+
 .title:hover {
   color: rgba(255, 225, 106, 1);
 }
+
 .dukan {
   color: rgba(255, 225, 106, 1);
   font-weight: 800;
@@ -46,11 +48,13 @@ body {
 .dukan:hover {
   color: #fff;
 }
+
 .description {
   font-size: 1.5rem;
   color: #fff;
   margin-bottom: 1rem;
 }
+
 .description:hover {
   color: rgba(255, 225, 106, 1);
 }
@@ -89,7 +93,7 @@ body {
   transform: scale(1.1);
 }
 
-.title-one{
+.title-one {
   text-align: center;
 }
 
@@ -106,4 +110,172 @@ body {
 
 .cta-button:hover {
   color: rgba(255, 225, 106, 1);
+}
+
+.card {
+  /* max-width: 350px !important; */
+}
+
+.card-img-top:hover {
+  transform: scale(1) !important;
+}
+
+.about:hover {
+  transform: scale(1);
+}
+
+/* <!--------------------------------------- start img focus-------------> */
+
+.imgs-focus {
+  width: 100vw;
+}
+
+.continar-img-focus {
+  display: grid;
+  grid-template-columns: 45vw 20vw 20vw;
+  justify-content: center;
+}
+
+@media (max-width: 1147px) {
+  .continar-img-focus {
+    grid-template-columns: 30vw 30vw 30vw;
+  }
+}
+
+@media (max-width: 770px) {
+  .continar-img-focus {
+    grid-template-columns: repeat(auto-fill, minmax(60vw, 30vw));
+    gap: 20px;
+  }
+}
+
+.img-focus {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-focus img {
+  width: 100%;
+  height: 250px;
+  transition: 1s;
+}
+
+.img-focus:hover img {
+  transform: scale(1.2);
+}
+
+.img-focus:hover h5 {
+  bottom: -7px;
+}
+
+/* .img-focus div {
+  background-color: rgba(156, 156, 156);
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+} */
+.img-focus h5 {
+  position: absolute;
+  bottom: -258px;
+  background-color: rgba(192, 189, 189, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  transition: 0.5s;
+  padding: 5px;
+  color: white;
+  font-weight: 700;
+}
+
+.img-focus span {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  font-weight: 800;
+  font-size: 32px;
+  transition: 1s;
+  color: white;
+  font-weight: 800;
+}
+
+.img-focus:hover span {
+  top: 45%;
+}
+
+.tittle-focus {
+  width: 85vw;
+  display: flex;
+  align-items: center;
+  margin: 0px auto;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.imgs-focus {
+  margin: 80px 0;
+}
+
+.tittle-focus p {
+  width: 780px;
+}
+
+.tittle-focus .btn {
+  padding: 10px !important;
+}
+
+.tittle-focus span {
+  color: rgb(255, 128, 0);
+}
+
+@media (max-width: 1390px) {
+  .tittle-focus p {
+    font-size: 16px !important;
+    width: 541px;
+  }
+}
+
+@media (max-width: 1090px) {
+  .tittle-focus {
+    flex-wrap: wrap;
+  }
+
+  .tittle-focus .btn {
+    margin-top: 10px;
+  }
+}
+
+/* <!--------------------------------------- end img focus---------------> */
+
+.slider {
+  margin: 0 20px;
+  overflow: "hidden";
+  padding: 2rem 0;
+}
+
+.slider img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.react-multi-carousel-list {
+  padding: 0rem 0 2rem 0;
+}
+
+.custom-dot-list-style button {
+  border: none;
+  background: rgb(255, 68, 68);
+}
+
+.react-multi-carousel-dot.react-multi-carousel-dot--active button {
+  background: rgb(255, 68, 68) !important;
+}
+
+.react-multi-carousel-dot button {
+  background: rgb(117, 114, 114) !important;
+}
+
+.react-multi-carousel-dot.react-multi-carousel-dot--active button {
+  background: rgb(117, 201, 183) !important;
 }

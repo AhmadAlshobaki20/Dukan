@@ -1,10 +1,10 @@
 const Vendor = require("./../models/vendorModel");
+const Customer = require("./../models/customer");
 const jwt = require("jsonwebtoken");
 
 // generate token
-
-const signing = (id) => {
-  return jwt.sign({ id: id }, process.env.PRIVATE_KEY /*secret_key*/);
+const signing = (id, key) => {
+  return jwt.sign({ id: id }, key /*secret_key*/);
 };
 
 // register handler Function
@@ -20,7 +20,7 @@ exports.registerVendor = async (req, res) => {
     orders: req.body.orders,
   });
   // create token
-  const token = signing(newVendor._id);
+  const token = signing(newVendor._id, process.env.PRIVATE_KEY_VENDOR);
   res.status(201).json({
     status: "success",
     token: token,
@@ -54,7 +54,7 @@ exports.vendorLogin = async (req, res) => {
         message: "incorrect password or email",
       });
     }
-    const token = signing(Ven._id);
+    const token = signing(Ven._id, process.env.PRIVATE_KEY_VENDOR);
     // 3)everything ok , send token\
     return res.status(200).json({
       token,
@@ -67,4 +67,43 @@ exports.vendorLogin = async (req, res) => {
       },
     });
   }
+};
+
+//Customers
+exports.customerRegister = async (req, res) => {
+  const newCustomer = await Customer.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+  });
+  const token = signing(newCustomer._id, process.env.PRIVATE_KEY_CUSTOMER);
+  res.status(200).json({
+    status: "success",
+    token: token,
+    data: {
+      customer: newCustomer,
+    },
+  });
+};
+
+exports.customerLogin = async () => {
+  const { email, password } = req.body;
+  //1) check email and password if exist
+  if (!email || !password) {
+    res.status(400).json({
+      message: "provide email or password",
+    });
+  }
+  // 2)check if customer exist
+  const customer = await Customer.find({ email });
+  if (!customer) {
+    res.status(400).json({
+      message: "email or password not valid",
+    });
+  }
+  const token = signing(customer._id, process.env.PRIVATE_KEY_CUSTOMER);
+  // 3)everything ok , send token\
+  return res.status(200).json({
+    token,
+  });
 };

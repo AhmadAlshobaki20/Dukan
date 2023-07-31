@@ -3,51 +3,53 @@ import imgTwo from "../../Images/2.jpg";
 import imgThree from "../../Images/3.jpg";
 import imgFour from "../../Images/4.jpg";
 import imgFive from "../../Images/5.jpg";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
-function Gallery() {
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+    slidesToSlide: 4, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 768 },
+    items: 3,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 767, min: 464 },
+    items: 2,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+};
+
+const sliderImageUrl = [imgOne, imgTwo, imgThree, imgFour, imgFive];
+
+const Slider = () => {
   return (
-    <>
-      <div className="card-title">
-        <h1 className="title-one">المعرض</h1>
-      </div>
-      <div id="carouselExampleFade" class="carousel slide carousel-fade">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src={imgOne} class="d-block w-100" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src={imgTwo} class="d-block w-100" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src={imgThree} class="d-block w-100" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src={imgFour} class="d-block w-100" alt="..." />
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleFade"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleFade"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </>
+    <div className="parent">
+      <Carousel
+        responsive={responsive}
+        autoPlay={true}
+        swipeable={true}
+        draggable={true}
+        showDots={true}
+        infinite={true}
+        partialVisible={false}
+        dotListClass="custom-dot-list-style"
+      >
+        {sliderImageUrl.map((imageUrl, index) => {
+          return (
+            <div className="slider" key={index}>
+              <img src={imageUrl} alt={`movie-${index}`} />
+            </div>
+          );
+        })}
+      </Carousel>
+    </div>
   );
-}
+};
 
-export default Gallery;
+export default Slider;

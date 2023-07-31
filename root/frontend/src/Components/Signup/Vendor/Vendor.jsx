@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Vendor.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const SignUpVendor = () => {
+  const params = useParams();
   const navigate = useNavigate();
   const [Alldata, setAllData] = useState({
     fname: "",
@@ -36,7 +38,8 @@ const SignUpVendor = () => {
   const postVendorData = async () => {
     try {
       const response = await axios.post(`/api/v1/vendors/register`, Alldata);
-      navigate("/store");
+      sessionStorage.setItem('id',JSON.stringify(response.data.data.vendor._id))
+      navigate(`/store`);
     } catch (err) {
       console.log(err);
     }
@@ -46,7 +49,6 @@ const SignUpVendor = () => {
   const handlerSubmit = (event) => {
     event.preventDefault();
     postVendorData();
-    console.log("done");
     console.log(Alldata);
   };
   return (

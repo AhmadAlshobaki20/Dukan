@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-
+const bcrypt = require("bcrypt");
 const customerSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: {
@@ -29,6 +29,21 @@ const customerSchema = new mongoose.Schema({
   ],
 });
 
+// hashing the password
+// pre('save') -> it will perform between the moment we getting data and the moment save data in dataBase
+// customerSchema.pre("save", async function (next) {
+//   if (!this.isModified("password")) return next();
+//   this.password = await bcrypt.hash(this.password, 12);
+//   next();
+// });
+
+// // create instance method -> it will be available on all document in the collection
+// customerSchema.methods.correctPassword = async function (
+//   candidatePassword,
+//   vendorPassword
+// ) {
+//   return await bcrypt.compare(candidatePassword, vendorPassword);
+// };
 
 const Customer = mongoose.model("Customer", customerSchema);
 

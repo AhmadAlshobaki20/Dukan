@@ -9,7 +9,9 @@ function CategoryCard() {
     <>
       <div className="card-title">
         <h1 className="title-one">منتجات مصنوعة بِحُب</h1>
-        <p className="title-one">سعداء لأن اختيارك وقع على دكان، نتمنى لك تجربة تسوق رائعة!</p>
+        <p className="title-one">
+          سعداء لأن اختيارك وقع على دكان، نتمنى لك تجربة تسوق رائعة!
+        </p>
       </div>
       <div className="row">
         <div className="col">

@@ -26,7 +26,7 @@ const SignUpCustomers = () => {
 
   const getCustomerData = async () => {
     try {
-      const response = await axios.get(`/api/v1/customers`);
+      const response = await axios.get(`/api/v1/customer`);
       console.log(response.data.data);
     } catch (err) {
       console.log(err);
@@ -35,7 +35,7 @@ const SignUpCustomers = () => {
   const postCustomerData = async () => {
     try {
       const response = await axios.post(`/api/v1/customer/register`, Alldata);
-      navigate("/Products");
+      navigate("/Cutoumers/Login");
     } catch (err) {
       console.log("-----------", err);
     }
@@ -59,7 +59,7 @@ const SignUpCustomers = () => {
       <div className="mask d-flex align-items-center h-100 gradient-custom-3">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
-            <div className="col-12 col-md-9  col-xl-6">
+            <div className="col-12 col-md-9 col-xl-6">
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">

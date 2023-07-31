@@ -5,23 +5,21 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 const ShoppingCart = () => {
   const Products = JSON.parse(sessionStorage.getItem("Products"));
-  const params = useParams()
+  const params = useParams();
 
-  const calculatePrice = ()=>{
+  const calculatePrice = () => {
     let totle = 0;
-    Products.forEach(element => {
+    Products.forEach((element) => {
       totle += element.price;
     });
     return totle;
-  }
+  };
 
+  // send data to database
 
-  // send data to database 
-
-  const setProductsData = async()=>{
-    const response = await axios.post(`/api/v1/customer/${params.customerId}`, )
-  }
-
+  const setProductsData = async () => {
+    const response = await axios.post(`/api/v1/customer/${params.customerId}`);
+  };
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#eee" }}>
@@ -33,7 +31,7 @@ const ShoppingCart = () => {
                 <div className="row">
                   <div className="col-lg-7">
                     <h5 className="mb-3">
-                      <Link to='/Products' className="text-body">
+                      <Link to="/Products" className="text-body">
                         <i className="fas fa-long-arrow-alt-left me-2"></i>
                         متابعة التسوق
                       </Link>
@@ -56,39 +54,41 @@ const ShoppingCart = () => {
 
                     {/* منتج 1 */}
                     {Products.map((product) => {
-                    return (
-                      <div className="card mb-3">
-                        <div className="card-body">
-                          <div className="d-flex justify-content-between">
-                            <div className="d-flex flex-row align-items-center">
-                              <div>
-                                <img
-                                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
-                                  className="img-fluid rounded-3"
-                                  alt="عنصر التسوق"
-                                  style={{ width: "65px" }}
-                                />
+                      return (
+                        <div className="card mb-3">
+                          <div className="card-body">
+                            <div className="d-flex justify-content-between">
+                              <div className="d-flex flex-row align-items-center">
+                                <div>
+                                  <img
+                                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                                    className="img-fluid rounded-3"
+                                    alt="عنصر التسوق"
+                                    style={{ width: "65px" }}
+                                  />
+                                </div>
+                                <div className="ms-3">
+                                  <h5>{product.title}</h5>
+                                  <p className="small mb-0">
+                                    {product.description}
+                                  </p>
+                                </div>
                               </div>
-                              <div className="ms-3">
-                                <h5>{product.title}</h5>
-                                <p className="small mb-0">{product.description}</p>
+                              <div className="d-flex flex-row align-items-center">
+                                <div style={{ width: "50px" }}>
+                                  <h5 className="fw-normal mb-0">{}</h5>
+                                </div>
+                                <div style={{ width: "80px" }}>
+                                  <h5 className="mb-0">{product.price}JD</h5>
+                                </div>
+                                <a href="#!" style={{ color: "#cecece" }}>
+                                  <i className="fas fa-trash-alt"></i>
+                                </a>
                               </div>
-                            </div>
-                            <div className="d-flex flex-row align-items-center">
-                              <div style={{ width: "50px" }}>
-                                <h5 className="fw-normal mb-0">{}</h5>
-                              </div>
-                              <div style={{ width: "80px" }}>
-                                <h5 className="mb-0">{product.price}JD</h5>
-                              </div>
-                              <a href="#!" style={{ color: "#cecece" }}>
-                                <i className="fas fa-trash-alt"></i>
-                              </a>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    );
+                      );
                     })}
                   </div>
 
