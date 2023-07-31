@@ -112,7 +112,11 @@ const ProductsCard = () => {
         <div className="row">
           {currentItems.map((product) => (
             <div
+<<<<<<< HEAD
               className="col-12 col-lg-4 col-md-4 col-sm-6 h-100"
+=======
+              className="col-12 col-lg-4 col-md-4 col-sm-6 h-50"
+>>>>>>> b81fcc56d96e61e3b6bd6eeb7eafda9b8fbe3236
               key={product.id}
             >
               <div className="mb-5 box-Shaddow">
@@ -125,11 +129,11 @@ const ProductsCard = () => {
                     <div className="ps-4 mb-3">
                       <h5 className="card-title mb-0 pb-3">{product.title}</h5>
                       <div className="d-flex gap-4 align-items-baseline">
-                        <p className="card-text">${product.price} JOD</p>
+                        <p className="card-text">{product.price} د.أ</p>
                       </div>
                       <div>
                         <Link to={`${product._id}`}>
-                          <button className="btn">details</button>
+                          <button className="btn">عرض التفاصيل</button>
                         </Link>
                       </div>
                     </div>

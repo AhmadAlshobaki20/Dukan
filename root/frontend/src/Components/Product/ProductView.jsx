@@ -21,10 +21,10 @@ export default function ProductView() {
   }, []);
 
   const addToCart = () => {
-    if(Products){
-      const allProduct = JSON.parse(sessionStorage.getItem("Products")) || []
+    if (Products) {
+      const allProduct = JSON.parse(sessionStorage.getItem("Products")) || [];
       allProduct.push(Products);
-      sessionStorage.setItem('Products',JSON.stringify(allProduct));
+      sessionStorage.setItem("Products", JSON.stringify(allProduct));
     }
   };
 
@@ -88,7 +88,7 @@ export default function ProductView() {
           <div className="ContentCardProduct">
             <h3>{Products.title}</h3>
             <p>{Products.description}</p>
-            <p> {`Price $${Products.price}`}</p>
+            <p> {`السعر:${Products.price} د.أ`}</p>
           </div>
           <Link
             className="AddtoCart"
@@ -96,7 +96,7 @@ export default function ProductView() {
               addToCart();
             }}
           >
-            حط المنتج فالسلة{" "}
+            أضف المنتج إلى السلة{" "}
           </Link>
         </div>
       </section>

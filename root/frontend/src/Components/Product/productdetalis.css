@@ -1,3 +1,9 @@
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .card-Details {
   max-width: 700px;
   text-align: center;
@@ -33,16 +39,13 @@
   background: rgb(10, 160, 130);
   padding: 10px;
   border-radius: 4px;
-
 }
 
 .AddtoCart:hover {
   color: rgb(255, 255, 255);
-
 }
 
 .ContentCardProduct {
-
   display: flex;
   align-items: center;
   justify-content: center;

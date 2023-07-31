@@ -24,6 +24,7 @@ a {
   width: 7em !important;
 }
 
+<<<<<<< HEAD
 #Logo-footer {
   width: 150px;
 }
@@ -65,3 +66,8 @@ a:hover {
     font-weight: 700;
     font-size: larger;
   }
+=======
+.mantine-11pjd7j {
+  margin-top: 100px;
+}
+>>>>>>> b81fcc56d96e61e3b6bd6eeb7eafda9b8fbe3236
