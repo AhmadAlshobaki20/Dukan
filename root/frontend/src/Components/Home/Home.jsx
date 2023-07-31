@@ -14,7 +14,6 @@ function Home() {
       <AboutCard />
       <EventsCard />
       <Gallery />
-      <ImageFocus />
     </>
   );
 }

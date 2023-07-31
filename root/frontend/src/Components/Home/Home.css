@@ -119,14 +119,11 @@ body {
 
 .card-img-top:hover {
   transform: scale(1) !important;
-
 }
 
 .about:hover {
   transform: scale(1);
 }
-
-
 
 /* <!--------------------------------------- start img focus-------------> */
 
@@ -250,9 +247,6 @@ body {
 }
 
 /* <!--------------------------------------- end img focus---------------> */
-
-
-
 
 .slider {
   margin: 0 20px;
