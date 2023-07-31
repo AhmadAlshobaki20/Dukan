@@ -32,7 +32,7 @@ export default function ProductView() {
     e.preventDefault()
     if (ID.quantity) {
       axios
-        .get(`http://localhost:3001/Users/${sessionStorage.getItem('id')}`)
+        .get(`http://localhost:3001/Users/${sessionStorage.getItem("id")}`)
         .then(function (response) {
           const userData = response.data
           const isElementExists = userData.Orders.New_Cart.filter(
@@ -47,14 +47,14 @@ export default function ProductView() {
 
             // Decrement the quantity by one, ensuring it doesn't go below zero
             axios
-              .get(`http://localhost:3001/Products/${ID.id}`)
+              .get(`/api/v1/products/${ID.id}`)
               .then(function (response) {
-                const productData = response.data
-                productData.quantity -= 1
+                const productData = response.data;
+                productData.quantity -= 1;
                 return axios.put(
                   `http://localhost:3001/Products/${ID.id}`,
                   productData
-                )
+                );
               })
               .then((response) => {})
               .catch((error) => {
@@ -62,7 +62,7 @@ export default function ProductView() {
               })
 
             return axios.put(
-              `http://localhost:3001/Users/${sessionStorage.getItem('id')}`,
+              `http://localhost:3001/Users/${sessionStorage.getItem("id")}`,
               userData
             )
           }
@@ -100,6 +100,7 @@ export default function ProductView() {
             onClick={() => {
               addToCart()
             }}
+            to="/Checkout"
           >
             أضف المنتج إلى السلة{' '}
           </Link>

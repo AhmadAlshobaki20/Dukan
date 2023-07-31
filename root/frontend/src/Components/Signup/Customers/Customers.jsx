@@ -26,7 +26,7 @@ const SignUpCustomers = () => {
 
   const getCustomerData = async () => {
     try {
-      const response = await axios.get(`/api/v1/customers`);
+      const response = await axios.get(`/api/v1/customer`);
       console.log(response.data.data);
     } catch (err) {
       console.log(err);
@@ -35,7 +35,7 @@ const SignUpCustomers = () => {
   const postCustomerData = async () => {
     try {
       const response = await axios.post(`/api/v1/customer/register`, Alldata);
-      navigate("/Products");
+      navigate("/Cutoumers/Login");
     } catch (err) {
       console.log("-----------", err);
     }

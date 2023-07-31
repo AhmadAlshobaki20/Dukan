@@ -170,7 +170,7 @@ option:hover {
   position: relative;
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
+.breadcrumb-item + .breadcrumb-item::before {
   float: right;
 }
 
@@ -182,4 +182,8 @@ option:hover {
 .card-subtitle,
 .card-text:last-child {
   margin-bottom: 9px;
+}
+
+#card-page {
+  height: 220px !important;
 }

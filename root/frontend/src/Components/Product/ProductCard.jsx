@@ -122,11 +122,7 @@ const ProductsCard = () => {
                       to={`/productCard/${product.id}`}
                       className="card-link"
                     ></NavLink>
-                    <img
-                      style={{ width: '100%', height: '200px' }}
-                      src={product.Image}
-                      alt=""
-                    />
+                    <img style={{width:"100%" ,height:"200px"}} src={product.Image} alt="" />
                     <div className="ps-4 mb-3">
                       <h5 className="card-title mb-0 pb-3">{product.title}</h5>
                       <div className="d-flex gap-4 align-items-baseline">

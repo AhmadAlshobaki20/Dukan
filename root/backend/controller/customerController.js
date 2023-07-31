@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const { json } = require("express");
 
 const createToken = (id, role) => {
-  return jwt.sign({ id, role }, "AAA123456", { expiresIn: "1h" }); // Token expiration
+  return jwt.sign({ id, role }, "AAA123456"); // Token expiration
 };
 
 exports.getAllCustomer = async (req, res) => {
@@ -100,12 +100,11 @@ exports.customerRegister = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create a new customer and save to the database
-    const newCustomer = new Customer({
-      name,
-      email,
+    const newCustomer = await Customer.create({
+      email: req.body.email,
+      name: req.body.name,
       password: hashedPassword,
     });
-    await newCustomer.save();
 
     res.status(201).json({
       status: "success",
@@ -120,6 +119,9 @@ exports.customerRegister = async (req, res) => {
       .json({ message: "An error occurred while registering customer." });
   }
 };
+
+
+
 
 // Add Orders
 exports.updateOrder = async (req, res) => {
