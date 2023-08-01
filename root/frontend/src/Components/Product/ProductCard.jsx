@@ -112,11 +112,7 @@ const ProductsCard = () => {
         <div className="row">
           {currentItems.map((product) => (
             <div
-<<<<<<< HEAD
-              className="col-12 col-lg-4 col-md-4 col-sm-6 h-100"
-=======
               className="col-12 col-lg-4 col-md-4 col-sm-6 h-50"
->>>>>>> b81fcc56d96e61e3b6bd6eeb7eafda9b8fbe3236
               key={product.id}
             >
               <div className="mb-5 box-Shaddow">

@@ -59,9 +59,6 @@ const Nav = () => {
         >
           <i className="fas fa-bars"></i>
         </button>
-        <HashLink smooth to="/Home#" className="Logo">
-          <img src={Logo} alt="" />
-        </HashLink>
         <div
           className="collapse navbar-collapse justify-content-center"
           id="navbarCenteredExample"
@@ -86,24 +83,12 @@ const Nav = () => {
             </ul>
           )}
         </div>
-<<<<<<< HEAD
-        {!vendor_token ? (
-          <div id="logo-logo">
-            <HashLink smooth to="/Home#" className="Logo">
-              <span>Dukan</span>
-            </HashLink>
+        <div>
+          <HashLink smooth to="/Home#" className="Logo">
+            Dukan
             <img src={Logo} alt="" />
-          </div>
-        ) : (
-          <div id="logo-logo">
-            <div smooth to="/Home#" className="Logo">
-              <span>Dukan</span>
-            </div>
-            <img src={Logo} alt="" />
-          </div>
-        )}
-=======
->>>>>>> b81fcc56d96e61e3b6bd6eeb7eafda9b8fbe3236
+          </HashLink>
+        </div>
       </div>
     </nav>
   );
