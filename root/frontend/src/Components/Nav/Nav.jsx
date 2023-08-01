@@ -39,9 +39,6 @@ const Nav = () => {
         >
           <i className="fas fa-bars"></i>
         </button>
-        <HashLink smooth to="/Home#" className="Logo">
-          <img src={Logo} alt="" />
-        </HashLink>
         <div
           className="collapse navbar-collapse justify-content-center"
           id="navbarCenteredExample"
@@ -86,6 +83,12 @@ const Nav = () => {
             </Link>
           </div>
         )}
+        <div>
+          <HashLink smooth to="/Home#" className="Logo">
+            Dukan
+            <img src={Logo} alt="" />
+          </HashLink>
+        </div>
       </div>
     </nav>
   );
