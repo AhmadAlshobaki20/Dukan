@@ -1,45 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useState } from "react";
 import "./Signin.css";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
 // import axios from "axios";
-const LoginCutoumers = () => {
-  const token = sessionStorage.getItem("customer-token");
 
-  const Navigate = useNavigate();
-  const [Alldata, setAllData] = useState({
-    email: "",
-    password: "",
-  });
+function LoginCutoumers() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handlerData = (event) => {
-    const { name, value } = event.target;
-    setAllData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-  // useEffect(() => {
-  //   getVendorData();
-  // }, []);
-
-  const handlerSendData = async () => {
+  async function checkUser() {
     try {
-      const response = await axios.post("/api/v1/customer/login", Alldata);
-      sessionStorage.setItem("customer-token", JSON.stringify(response.data));
-      console.log(JSON.parse(sessionStorage.getItem("customer-token")));
-      // Navigate(`/`);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+      const response = await fetch("/api/v1/customer/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-  // // handlerSubmit
-  const handlerSubmit = (event) => {
-    event.preventDefault();
-    handlerSendData();
-    console.log("done");
-  };
+      if (response.ok) {
+        const data = await response.json();
+        sessionStorage.setItem("id", data.id); // Assuming the response contains the user ID
+        navigate("/Products");
+      } else {
+        console.log("Login failed.");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+  }
+
   return (
     <section
       className="vh-100 bg-image"
@@ -55,35 +47,43 @@ const LoginCutoumers = () => {
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">
-                    قم بتسجيل الدخول
+                    تسجيل دخول
                   </h2>
-                  <form>
-                    <div className="form-outline mb-4">
-                      <input
-                        type="text"
-                        id="form3Example1cg"
-                        className="form-control-lg"
-                        placeholder="الإيميل"
-                        name="email"
-                        onChange={handlerData}
-                      />
-                    </div>
-                    <div className="form-outline mb-4">
-                      <input
-                        type="password"
-                        id="form3Example4cdg"
-                        className="form-control-lg"
-                        placeholder="كلمة المرور"
-                        name="password"
-                        onChange={handlerData}
-                      />
-                    </div>
-                    <div className="d-flex justify-content-center">
-                      <button className="btn" onClick={handlerSubmit}>
-                        تسجيل دخول
-                      </button>
-                    </div>
-                  </form>
+
+                  <div className="form-outline mb-4">
+                    <input
+                      type="email"
+                      placeholder="البريد الإلكتروني"
+                      className="email style"
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-outline mb-4">
+                    <input
+                      type="password"
+                      id="inputPassword5"
+                      placeholder="كلمة المرور"
+                      aria-describedby="passwordHelpBlock"
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="password style"
+                    />
+                  </div>
+                  <div className="d-flex justify-content-center">
+                    <button
+                      className="btn"
+                      onClick={checkUser}
+                      variant="success"
+                    >
+                      تسجيل دخول
+                    </button>
+                  </div>
+                  <br />
+                  <p>
+                    ليس لديك حساب؟
+                    <Link to="/Customers" className="text-1">
+                      سجل من هنا
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>
@@ -92,6 +92,6 @@ const LoginCutoumers = () => {
       </div>
     </section>
   );
-};
+}
 
 export default LoginCutoumers;

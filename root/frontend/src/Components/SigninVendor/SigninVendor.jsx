@@ -1,43 +1,44 @@
 import React, { useEffect, useState } from "react";
 import "./Signin.css";
 import axios from "axios";
-import { useNavigate, useParams, redirect } from "react-router-dom";
+import { useNavigate, useParams, redirect, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function LoginVendor() {
-  const navigate = useNavigate();
-  const [Alldata, setAllData] = useState({
-    email: "",
-    password: "",
-  });
+  // const navigate = useNavigate();
+  // const [Alldata, setAllData] = useState({
+  //   email: "",
+  //   password: "",
+  // });
 
-  const handlerData = (event) => {
-    const { name, value } = event.target;
-    setAllData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  // const handlerData = (event) => {
+  //   const { name, value } = event.target;
+  //   setAllData((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const token = JSON.parse(sessionStorage.getItem("vendor_token"));
+  // const token = JSON.parse(sessionStorage.getItem("vendor_token"));
 
-  axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
-  // handle send email and password
-  const handlerSendData = async () => {
-    try {
-      const response = await axios.post("/api/v1/vendors/login", Alldata);
-      sessionStorage.setItem("vendor_token", JSON.stringify(response.data));
-      navigate(`/store`);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+  // // handle send email and password
+  // const handlerSendData = async () => {
+  //   try {
+  //     const response = await axios.get("/api/v1/vendors/login", Alldata);
+  //     sessionStorage.setItem("vendor_token", JSON.stringify(response.data));
+  //     navigate(`/store`);
+  //   } catch (err) {
+  //     console.log("err", err);
+  //   }
+  // };
 
-  const handleSubmit = (e) => {
-    console.log(token);
-    e.preventDefault();
-    handlerSendData();
-  };
+  // const handleSubmit = (e) => {
+  //   console.log(token);
+  //   e.preventDefault();
+  //   handlerSendData();
+  // };
 
   return (
     <section
@@ -63,11 +64,11 @@ function LoginVendor() {
                         id="form3Example1cg"
                         className="form-control-lg"
                         placeholder="الإيميل"
-                        name="email"
-                        value={Alldata.email}
-                        onChange={(e) => {
-                          handlerData(e);
-                        }}
+                        // name="email"
+                        // value={Alldata.email}
+                        // onChange={(e) => {
+                        //   handlerData(e);
+                        // }}
                       />
                     </div>
                     <div className="form-outline mb-4">
@@ -77,21 +78,23 @@ function LoginVendor() {
                         className="form-control-lg"
                         placeholder="كلمة المرور"
                         name="password"
-                        value={Alldata.password}
-                        onChange={(e) => {
-                          handlerData(e);
-                        }}
+                        // value={Alldata.password}
+                        // onChange={(e) => {
+                        //   handlerData(e);
+                        // }}
                       />
                     </div>
                     <div className="d-flex justify-content-center">
-                      <button
-                        className="btn"
-                        onClick={(e) => {
-                          handleSubmit(e);
-                        }}
-                      >
-                        تسجيل دخول
-                      </button>
+                      <Link to={`/Store`}>
+                        <button
+                          className="btn"
+                          // onClick={(e) => {
+                          //   handleSubmit(e);
+                          // }}
+                        >
+                          تسجيل دخول
+                        </button>
+                      </Link>
                     </div>
                   </form>
                 </div>

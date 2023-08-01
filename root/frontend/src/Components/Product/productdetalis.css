@@ -36,13 +36,9 @@ body {
 }
 
 .AddtoCart {
-  background: rgb(10, 160, 130);
+  background: rgb(10, 160, 130) !important;
   padding: 10px;
-  border-radius: 4px;
-}
-
-.AddtoCart:hover {
-  color: rgb(255, 255, 255);
+  border-radius: 6px;
 }
 
 .ContentCardProduct {

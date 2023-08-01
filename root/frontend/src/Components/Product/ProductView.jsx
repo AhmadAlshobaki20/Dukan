@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./productdetalis.css";
 import axios, { all } from "axios";
 import swal from "sweetalert";
@@ -79,25 +80,81 @@ export default function ProductView() {
 
   return (
     <>
-      <section className="sectondetalsproduct">
-        <div className="card-Details">
-          {/* <img className="img-product" src={productDet.image} alt="" /> */}
-          <div className="ContentCardProduct">
-            <h3>{Products.title}</h3>
-            <p>{Products.description}</p>
-            <p> {`السعر:${Products.price} د.أ`}</p>
-          </div>
-          <Link
-            className="AddtoCart"
-            onClick={() => {
-              addToCart();
-            }}
-            to="/Checkout"
-          >
-            أضف المنتج إلى السلة{" "}
-          </Link>
+      {/* display products details */}
+      <div className="container mt-3 mb-5">
+        <div className="mb-3">
+          <NavLink to={`/Products`} className="card-link mb">
+            <i
+              className="fa-solid fa-arrow-right fa-xl"
+              style={{ color: "#374151" }}
+            ></i>
+            {/* navigate from the img to product view component */}
+          </NavLink>
         </div>
-      </section>
+        <div className="row">
+          <div className="col-12 col-lg-6">
+            <img
+              src={`${Products.Image}`}
+              alt={`${Products.title}`}
+              height="100%"
+              width="100%"
+            />
+          </div>
+          <div className="col-lg-6">
+            {/* <p className="text-bold p-2 me-3">{Products.category}</p> */}
+            <h4 className="display-5 fw-bolder">{`${Products.title}`}</h4>
+
+            <hr />
+            <div className="mb-5 mt-5 text-center">
+              <h3 className="fw-bolder m-0" id="price">
+                {Products.price} د.أ
+              </h3>
+            </div>
+
+            <button className=" btnView display-6 mb-5 ms-3 w-50 border border-0">
+              <Link
+                className="AddtoCart"
+                onClick={() => {
+                  addToCart();
+                }}
+                to="/Cart"
+              >
+                أضف المنتج إلى السلة{" "}
+              </Link>
+            </button>
+            <br />
+
+            {/* I used tab "bootstrap" for this style */}
+
+            <nav className="ps-2">
+              <div className="nav nav-tabs ps-2 " id="nav-tab" role="tablist">
+                <button
+                  className="nav-link active"
+                  id="nav-home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#nav-home"
+                  type="button"
+                  role="tab"
+                  aria-controls="nav-home"
+                  aria-selected="true"
+                >
+                  التفاصيل
+                </button>
+              </div>
+            </nav>
+            <div className="tab-content" id="nav-tabContent">
+              <div
+                className="tab-pane fade show active"
+                id="nav-home"
+                role="tabpanel"
+                aria-labelledby="nav-home-tab"
+              >
+                {Products.description}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

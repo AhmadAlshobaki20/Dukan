@@ -3,7 +3,11 @@
 }
 
 .bg-light {
-  /* background: linear-gradient(to right, rgba(164, 212, 155, 1), rgba(117, 200, 182, 1)) !important */
+  background: linear-gradient(
+    to right,
+    rgba(164, 212, 155, 1),
+    rgba(117, 200, 182, 1)
+  ) !important;
 }
 
 nav {

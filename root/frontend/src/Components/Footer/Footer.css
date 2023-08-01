@@ -24,7 +24,6 @@ a {
   width: 7em !important;
 }
 
-<<<<<<< HEAD
 #Logo-footer {
   width: 150px;
 }
@@ -51,23 +50,23 @@ nav {
   font-size: 30px;
 }
 
-
 a:hover {
   color: rgb(255, 255, 255);
 }
 
-
-#logo-logo{
+#logo-logo {
   display: flex;
-  align-items: center;  
-  }
-  #logo-logo #Logo-footer-log{
-    color: rgb(255, 255, 255);
-    font-weight: 700;
-    font-size: larger;
-  }
-=======
+  align-items: center;
+}
+#logo-logo #Logo-footer-log {
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: larger;
+}
 .mantine-11pjd7j {
   margin-top: 100px;
 }
->>>>>>> b81fcc56d96e61e3b6bd6eeb7eafda9b8fbe3236
+
+.mantine-11pjd7j {
+  margin-top: -4px;
+}

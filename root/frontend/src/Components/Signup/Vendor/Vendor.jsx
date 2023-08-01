@@ -38,7 +38,10 @@ const SignUpVendor = () => {
   const postVendorData = async () => {
     try {
       const response = await axios.post(`/api/v1/vendors/register`, Alldata);
-      sessionStorage.setItem('id',JSON.stringify(response.data.data.vendor._id))
+      sessionStorage.setItem(
+        "id",
+        JSON.stringify(response.data.data.vendor._id)
+      );
       navigate(`/store`);
     } catch (err) {
       console.log(err);
@@ -53,14 +56,14 @@ const SignUpVendor = () => {
   };
   return (
     <section className="vh-100 bg-image">
-      <div className="mask d-flex align-items-center h-100 gradient-custom-3">
-        <div className="container h-100">
-          <div className="row d-flex justify-content-center align-items-center h-100">
+      <div className="mask d-flex align-items-center h-100 gradient-custom-3 ">
+        <div className="container ">
+          <div className="row d-flex justify-content-center align-items-center h-50">
             <div className="col-12 col-md-9 col-xl-6">
               <div className="card" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-5">
                   <h2 className="text-uppercase text-center mb-5">
-                    باشر بأنشاء متجرك مع دكان
+                    باشر بإنشاء متجرك مع دكان
                   </h2>
                   <form className="vendor-form">
                     <div className="form-outline mb-4">
@@ -68,7 +71,7 @@ const SignUpVendor = () => {
                         type="text"
                         id="form3Example1cg"
                         className="form-control-lg"
-                        placeholder="اسمك الاول"
+                        placeholder="الاسم الأول"
                         name="fname"
                         value={Alldata.fname}
                         onChange={(e) => {
@@ -81,7 +84,7 @@ const SignUpVendor = () => {
                         type="text"
                         id="form3Example4cdg"
                         className="form-control-lg"
-                        placeholder="اسمك الثاني"
+                        placeholder="الاسم الثاني"
                         name="lname"
                         onChange={(e) => {
                           handlerData(e);
@@ -148,7 +151,7 @@ const SignUpVendor = () => {
                     </div>
                     <div className="d-flex justify-content-center">
                       <button className="btn" onClick={handlerSubmit}>
-                        انشاء
+                        إنشاء
                       </button>
                     </div>
                   </form>

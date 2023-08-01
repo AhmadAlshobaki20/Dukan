@@ -27,26 +27,6 @@ const Nav = () => {
   // }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      {vendor_token || customer_token ? (
-        <button
-          className="btn"
-          onClick={() => {
-            handleLogOut();
-            handleOut();
-          }}
-        >
-          الخروج
-        </button>
-      ) : (
-        <div id="buttons">
-          <Link to="/Vendor/Login">
-            <button className="btn">الدخول للمتجر</button>
-          </Link>
-          <Link to="/Cutoumers/Login">
-            <button className="btn">تسجيل دخول</button>
-          </Link>
-        </div>
-      )}
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -81,29 +61,31 @@ const Nav = () => {
                 </HashLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled">تواصل</a>
+                <a className="nav-link disabled"> تواصل معنا</a>
               </li>
             </ul>
           )}
         </div>
-<<<<<<< HEAD
-        {!vendor_token ? (
-          <div id="logo-logo">
-            <HashLink smooth to="/Home#" className="Logo">
-              <span>Dukan</span>
-            </HashLink>
-            <img src={Logo} alt="" />
-          </div>
+        {vendor_token || customer_token ? (
+          <button
+            className="btn"
+            onClick={() => {
+              handleLogOut();
+              handleOut();
+            }}
+          >
+            الخروج
+          </button>
         ) : (
-          <div id="logo-logo">
-            <div smooth to="/Home#" className="Logo">
-              <span>Dukan</span>
-            </div>
-            <img src={Logo} alt="" />
+          <div id="buttons">
+            <Link to="/Vendor/Login">
+              <button className="btn">الدخول إلى المتجر</button>
+            </Link>
+            <Link to="/Cutoumers/Login">
+              <button className="btn">تسجيل دخول</button>
+            </Link>
           </div>
         )}
-=======
->>>>>>> b81fcc56d96e61e3b6bd6eeb7eafda9b8fbe3236
       </div>
     </nav>
   );
