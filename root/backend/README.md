@@ -1,2 +1,0 @@
-# GroupProject
-NodeJS_Project 
